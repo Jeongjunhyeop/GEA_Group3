@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    PlayerStatue state;
+    CharacterState state;
+    CharacterAnimation animation;
 
     float rotationSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        state = GetComponent<PlayerStatue>();
+        state = GetComponent<CharacterState>();
+        animation = GetComponent<CharacterAnimation>();
     }
 
     void FixedUpdate()
@@ -31,6 +33,8 @@ public class PlayerMove : MonoBehaviour
     void move(float h, float v)
     {
         Vector3 movement = new Vector3(h, 0, v);
+
+        animation.Move(h, v);
 
         if (movement != Vector3.zero)
         {

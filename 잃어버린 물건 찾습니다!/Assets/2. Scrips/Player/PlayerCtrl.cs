@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    PlayerStatue statue;
+    CharacterState statue;
     //CharaAnimation charaAnimation;
     Transform attackTarget;
     Rigidbody rigidbody;
@@ -33,7 +33,7 @@ public class PlayerCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        statue = GetComponent<PlayerStatue>();
+        statue = GetComponent<CharacterState>();
         //charaAnimation = GetComponent<CharaAnimation>();
         //gameRuleCtrl = FindObjectOfType<GameRuleCtrl>();
         rigidbody = GetComponent<Rigidbody>();

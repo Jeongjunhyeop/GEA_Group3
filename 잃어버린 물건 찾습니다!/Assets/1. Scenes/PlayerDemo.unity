@@ -162,7 +162,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &241533344
+--- !u!114 &241533342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,11 +171,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 241533339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17ca4a8a47d1b94a9df253be5b8ef71, type: 3}
+  m_Script: {fileID: 11500000, guid: c27ecc9a9732cee4f9d29c8e46a6b231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoldnAttackRange: 1.5
---- !u!114 &241533345
+--- !u!114 &241533343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,7 +183,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 241533339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22bbd785b88baa49a8c992ba5cace90, type: 3}
+  m_Script: {fileID: 11500000, guid: edb238d53c1e51348a3f96da38f70289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
@@ -198,6 +197,19 @@ MonoBehaviour:
   jumpPower: 5
   ATC: 1
   grabbedThing: {fileID: 0}
+--- !u!114 &241533344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241533339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17ca4a8a47d1b94a9df253be5b8ef71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldnAttackRange: 1.5
 --- !u!114 &241533346
 MonoBehaviour:
   m_ObjectHideFlags: 0
