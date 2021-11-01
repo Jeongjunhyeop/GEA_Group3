@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     CharacterState state;
     CharacterAnimation animation;
+    Rigidbody rigid;
+    public GroundSensor sensor;
 
     float rotationSpeed = 5f;
 
@@ -14,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     {
         state = GetComponent<CharacterState>();
         animation = GetComponent<CharacterAnimation>();
+        //sensor = GetComponent<GroundSensor>();
     }
 
     void FixedUpdate()
@@ -22,12 +25,7 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         move(h, v);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        jump();
     }
 
     void move(float h, float v)
@@ -48,5 +46,17 @@ public class PlayerMove : MonoBehaviour
         }
 
         transform.Translate(movement * state.moveSpeed * Time.deltaTime);
+    }
+
+    void jump()
+    {
+        if (!sensor.onGround())
+            return;
+
+        if (Input.GetKeyDown("Space"))
+        {
+            rigid.AddForce(Vector3.up * state.jumpPower, ForceMode.Impulse);
+            animation.Jump();
+        }
     }
 }

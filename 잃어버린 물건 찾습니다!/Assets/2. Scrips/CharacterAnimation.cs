@@ -6,6 +6,7 @@ public class CharacterAnimation : MonoBehaviour
 {
 	Animator animator;
 	CharacterState status;
+	public GroundSensor sensor;
 	bool attacked = false;
 
 	public void Move(float h, float v)
@@ -25,34 +26,20 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
-	public bool IsAttacked()
-	{
-		return attacked;
-	}
-
-	void StartAttackHit()
-	{
-		Debug.Log("StartAttackHit");
-	}
-
-	void EndAttackHit()
-	{
-		Debug.Log("EndAttackHit");
-	}
-
-	void EndAttack()
-	{
-		attacked = true;
-	}
+	public void Jump()
+    {
+		animator.SetTrigger("Jumping");
+    }
 
 	void Start()
 	{
 		animator = GetComponent<Animator>();
 		status = GetComponent<CharacterState>();
+		//sensor = GetComponent<GroundSensor>();
 	}
 
 	void Update()
 	{
-		
+		animator.SetBool("OnGround", sensor.onGround());
 	}
 }
