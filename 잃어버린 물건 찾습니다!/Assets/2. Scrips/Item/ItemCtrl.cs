@@ -21,6 +21,9 @@ public class ItemCtrl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //플레이어 충동처리
+        if(other.tag == "Player") //플레이어와 충돌시
+        {
+            Destroy(gameObject); //아이템삭제
+        }
     }
 }

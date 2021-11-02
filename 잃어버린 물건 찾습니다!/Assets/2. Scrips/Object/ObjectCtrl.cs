@@ -11,7 +11,6 @@ public class ObjectCtrl : MonoBehaviour
     enum State
     {
         Nomal, //기본상태
-        Attack, //공격모드, 후에 구현예정
         Destroy, //파괴상태
     };
 
@@ -65,13 +64,13 @@ public class ObjectCtrl : MonoBehaviour
 
     void Damage()
     {
-        status.Hp -= 1;
-        print("상자 HP -1 ");
+        status.hp -= 1;
+        //print("상자 HP -1 ");
 
-        if (status.Hp == 0)
+        if (status.hp == 0)
         {
             ChangeState(State.Destroy);
-            print("상자부서짐");
+            //print("상자부서짐");
         }
     }
 }
