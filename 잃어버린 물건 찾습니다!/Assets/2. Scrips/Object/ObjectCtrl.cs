@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class ObjectCtrl : MonoBehaviour
 {
-    ObjectStatus status; //오브젝트 상태
-
+    [Header("확률")]
+    public int[] percentage = {
+       74, //꽝
+       5, //이동속도 증가
+       5, //적 이동속도 일시 감소
+       5, //게임플레이시간
+       5, //공격 1회 막기
+       5, //미션아이템 위치 표시
+       1, //미션 아이템
+    };
+    [Header("프리팹")]
     public GameObject[] dropItemPrefab; //아이템 프리팹저장
+
+    ObjectStatus status; //오브젝트 상태
     private MeshRenderer meshRenderer;
 
-    int objNum = 0;
+    int total;
+    int randomNumber;
+
 
     enum State
     {
@@ -24,6 +37,7 @@ public class ObjectCtrl : MonoBehaviour
     {
         status = GetComponent<ObjectStatus>();
         meshRenderer = GetComponent<MeshRenderer>();
+
         if (gameObject.tag == "Switch")
         {
             StartCoroutine("DestroySwitch");
@@ -32,7 +46,6 @@ public class ObjectCtrl : MonoBehaviour
 
     private void Update()
     {
-        RandomValue();
         switch(state)
         {
             case State.Nomal:
@@ -53,54 +66,6 @@ public class ObjectCtrl : MonoBehaviour
             }
         }
     }
-    public int RandomValue() //basic 박스 아이템 확률 계산
-    {
-        int randomValue = Random.Range(0, 100);
-
-
-        if (randomValue >= 0 && randomValue < 5) //5%
-        {
-            objNum = 0; //TimeUp
-            return objNum;
-        }
-        if (randomValue >= 5 && randomValue < 10) //5%
-        {
-            objNum = 1; //SpeedUp
-            return objNum;
-        }
-        if (randomValue >= 10 && randomValue < 15) //5%
-        {
-            objNum = 2; //SpeedDown
-            return objNum;
-        }
-        if (randomValue >= 25 && randomValue < 100) //75%
-        {
-            objNum = 3; //Empty
-            return objNum;
-        }
-        if (randomValue >= 15 && randomValue < 20) //5%
-        {
-            objNum = 4; //Nav
-            return objNum;
-        }
-        if (randomValue >= 20 && randomValue < 25) //5%
-        {
-            objNum = 5; //Sheild
-            return objNum;
-        }
-        if (randomValue == 100) //1%
-        {
-            objNum = 6; //Gear
-            return objNum;
-        }
-
-        else
-        {
-            objNum = 3;
-            return objNum;
-        }
-
-    }
 
     void ChangeState(State nextState)
     {
@@ -110,15 +75,26 @@ public class ObjectCtrl : MonoBehaviour
     {
         if (dropItemPrefab.Length == 0)//아이템프리팹이 안 들어가있을경우
             return;
-        if ((gameObject.tag == "Box")) //박스일경우
+
+        foreach (var item in percentage)
         {
-            GameObject dropItem = dropItemPrefab[objNum]; //아이템확률계산
-            Instantiate(dropItem, transform.position, Quaternion.identity); //아이템소환
+            total += item;
+
         }
-        else //박스가 아닐경우
+        randomNumber = Random.Range(0, total);
+
+        for (int i = 0; i < percentage.Length; i++)
         {
-            GameObject dropItem = dropItemPrefab[Random.Range(0,dropItemPrefab.Length)];
-            Instantiate(dropItem, transform.position, Quaternion.identity);
+            if (randomNumber <= percentage[i])
+            {
+                GameObject dropItem = dropItemPrefab[i];
+                Instantiate(dropItem, transform.position, Quaternion.identity);
+                return;
+            }
+            else
+            {
+                randomNumber -= percentage[i];
+            }
         }
     }
     void ObjDestroy() //오브젝트 파괴시
