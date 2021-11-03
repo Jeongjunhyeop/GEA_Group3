@@ -9,6 +9,7 @@ public class CharacterState : MonoBehaviour
     public bool isHolding = false;
     public bool isJumping = false;
     public bool isGrogging = false;
+    public bool onGround = false;
 
     //초기 속도
     public float basicMSpeed = 3f;
@@ -36,6 +37,7 @@ public class CharacterState : MonoBehaviour
         //현재 상태를 초기화
         grabbedThing = null;
         isHolding = false;
+        onGround = false;
         isJumping = false;
         isGrogging = false;
     }
@@ -43,6 +45,12 @@ public class CharacterState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //바닥 탐지ray 쏘기
+        Debug.DrawRay(transform.position, Vector3.down * 0.1f, new Color(1, 0, 1));
+        //ray를 쏴서 맞은 오브젝트 탐지
+        if (Physics.Raycast(transform.position, Vector3.down * 0.1f, 0.5f))
+        {
+            onGround = true;
+        }
     }
 }

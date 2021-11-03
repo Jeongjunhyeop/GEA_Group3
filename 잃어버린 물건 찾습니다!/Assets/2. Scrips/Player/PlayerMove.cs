@@ -7,7 +7,6 @@ public class PlayerMove : MonoBehaviour
     CharacterState state;
     CharacterAnimation animation;
     Rigidbody rigid;
-    public GroundSensor sensor;
 
     float rotationSpeed = 5f;
 
@@ -16,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     {
         state = GetComponent<CharacterState>();
         animation = GetComponent<CharacterAnimation>();
-        //sensor = GetComponent<GroundSensor>();
+        rigid = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -50,11 +49,12 @@ public class PlayerMove : MonoBehaviour
 
     void jump()
     {
-        if (!sensor.onGround())
+        if (!state.onGround)
             return;
 
-        if (Input.GetKeyDown("Space"))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
+            state.onGround = false;
             rigid.AddForce(Vector3.up * state.jumpPower, ForceMode.Impulse);
             animation.Jump();
         }
