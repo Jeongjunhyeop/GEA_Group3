@@ -15,7 +15,8 @@ public class ItemCtrl : MonoBehaviour
         MissionObject, //미션아이템
     };
     public ItemKind kind;
-    public float rotateSpeed; //아이템 회전속도
+    [SerializeField]
+    private float rotateSpeed; //아이템 회전속도
 
     private void Start()
     {

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9005749052482725944}
   m_Layer: 0
   m_Name: BasicBox
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,11 +128,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3bcedcf60bfdc429eace3d7cbd63e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  percentage: 23000000190000000f0000000a000000080000000500000002000000
+  total: 0
   dropItemPrefab:
-  - {fileID: 3602305935632453605, guid: d767f3a9616c32448ab7b7cc11d0654d, type: 3}
+  - {fileID: 8546303702486556810, guid: 8c66f53d7871be2479b00c6286f7eb6a, type: 3}
   - {fileID: 2723445742605956781, guid: 74b47552dfcbaff4c937968538f09065, type: 3}
   - {fileID: 1819010823602760704, guid: 9d1605f1bed75c040bfbe597d93922c8, type: 3}
-  - {fileID: 8546303702486556810, guid: 8c66f53d7871be2479b00c6286f7eb6a, type: 3}
+  - {fileID: 3602305935632453605, guid: d767f3a9616c32448ab7b7cc11d0654d, type: 3}
   - {fileID: 1390804651538706, guid: 103fd3117a18e404990a0b0b7dba4079, type: 3}
   - {fileID: 1773114164034446, guid: dc620501cadb0d6438cce4dcc07c5463, type: 3}
   - {fileID: 1101246696297462, guid: e079c271bd2fe7d49a3b54cc8ce65cb8, type: 3}
@@ -169,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6856216147828328531
 Transform:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6856216148790663149
 Transform:
   m_ObjectHideFlags: 0

@@ -294,7 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3bcedcf60bfdc429eace3d7cbd63e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentage: 
+  percentage: 64000000
+  total: 0
   dropItemPrefab:
   - {fileID: 5784727512083476847, guid: 9ddf306dc255a4948ad437c4ea065f45, type: 3}
 --- !u!114 &1207076623
@@ -309,6 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c1fa693e9004947887c9191d7fcf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
-  maxHp: 3
+  hp: 1
+  maxHp: 1
   objectName: Explosive
