@@ -29,7 +29,14 @@ public class ItemCtrl : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World); //아이템 회전
+        StartCoroutine("DestroyItem");
 
+    }
+
+    IEnumerator DestroyItem()
+    {
+        yield return new WaitForSecondsRealtime(10f);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

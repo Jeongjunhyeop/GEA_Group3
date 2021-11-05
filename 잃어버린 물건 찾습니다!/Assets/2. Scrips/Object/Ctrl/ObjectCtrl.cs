@@ -62,7 +62,6 @@ public class ObjectCtrl : MonoBehaviour
             switch (state)
             {
                 case State.Nomal:
-                    //ObjReset();
                     break;
                 case State.Destroy:
                     ObjDestroy();
@@ -100,25 +99,9 @@ public class ObjectCtrl : MonoBehaviour
     void ObjDestroy() //오브젝트 파괴시
     {
         dropItem(); //아이템떨굼
-        //status.hp += status.maxHp;
-        //gameObject.SetActive(false);
-        
-        //if (transform.tag == "Switch")
-            Destroy(gameObject); //오브젝트 삭제
+        Destroy(gameObject); //오브젝트 삭제
 
     }
-    //void ObjReset()
-    //{
-    //    //status.hp += status.maxHp;
-    //    gameObject.SetActive(true);
-    //    //StartCoroutine("ResetObj");
-    //}
-    //IEnumerator ResetObj()
-    //{
-    //    print("코루틴시작7초후 true전환");
-    //    yield return new WaitForSeconds(7.0f);
-    //    gameObject.SetActive(true);
-    //}
 
     void Damage()
     {
