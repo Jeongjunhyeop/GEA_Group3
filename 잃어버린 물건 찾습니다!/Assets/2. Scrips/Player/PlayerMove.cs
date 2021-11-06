@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     CharacterState state;
     CharacterAnimation animation;
     Rigidbody rigid;
+    GameObject playerGrabPoint;
 
     float rotationSpeed = 5f;
 
@@ -16,6 +17,7 @@ public class PlayerMove : MonoBehaviour
         state = GetComponent<CharacterState>();
         animation = GetComponent<CharacterAnimation>();
         rigid = GetComponent<Rigidbody>();
+        playerGrabPoint = GameObject.FindGameObjectWithTag("GrabPoint");
     }
 
     void FixedUpdate()
@@ -25,6 +27,9 @@ public class PlayerMove : MonoBehaviour
 
         move(h, v);
         jump();
+
+        if (Input.GetMouseButtonDown(2) && state.isHolding)
+            Drop();
     }
 
     void move(float h, float v)
@@ -58,5 +63,32 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector3.up * state.jumpPower, ForceMode.Impulse);
             animation.Jump();
         }
+    }
+
+    public void Hold(GameObject item)
+    {
+        SetGrab(item, true);
+        state.isHolding = true;
+    }
+
+    void Drop()
+    {
+        GameObject item = playerGrabPoint.GetComponentInChildren<Rigidbody>().gameObject;
+        SetGrab(item, false);
+
+        playerGrabPoint.transform.DetachChildren();
+        state.isHolding = false;
+    }
+
+    void SetGrab(GameObject item, bool isHolding)
+    {
+        Collider[] itemColliders = item.GetComponents<Collider>();
+        Rigidbody itemRigid = item.GetComponent<Rigidbody>();
+
+        foreach (Collider itemCollider in itemColliders)
+        {
+            itemCollider.enabled = !isHolding;
+        }
+        itemRigid.isKinematic = isHolding;
     }
 }
