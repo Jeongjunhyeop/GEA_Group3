@@ -14,6 +14,9 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false; //마우스 커서를 보이지 않게
+        Cursor.lockState = CursorLockMode.Locked; //마우스 커서 위치 고정
+
         state = GetComponent<CharacterState>();
         animation = GetComponent<CharacterAnimation>();
         rigid = GetComponent<Rigidbody>();
@@ -31,6 +34,8 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetMouseButtonDown(2) && state.isHolding)
             Drop();
     }
+
+
 
     void move(float h, float v)
     {

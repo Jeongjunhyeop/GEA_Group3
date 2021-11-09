@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063dcbcc843528848a26917b46a7ccb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
 --- !u!4 &241533347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4436991204886914, guid: 722ecf17232566e4a81b862e2ca44aa0, type: 3}
@@ -809,6 +810,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 631e0fedef72ee24fa49b2748b197947, type: 3}
+--- !u!1 &978209362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978209363}
+  m_Layer: 0
+  m_Name: FollowCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978209363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978209362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 241533347}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &978619002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1596,6 +1627,7 @@ GameObject:
   - component: {fileID: 1721297572}
   - component: {fileID: 1721297571}
   - component: {fileID: 1721297570}
+  - component: {fileID: 1721297573}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1661,13 +1693,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721297569}
-  m_LocalRotation: {x: 0.2411597, y: 0, z: 0, w: 0.9704855}
-  m_LocalPosition: {x: 0, y: 3.2999992, z: -3.02}
+  m_LocalRotation: {x: -0, y: -0.9577741, z: 0.28752196, w: 0}
+  m_LocalPosition: {x: 5, y: 24.32, z: 8.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 241533347}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 27.91, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 33.419, y: -180, z: 0}
+--- !u!114 &1721297573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721297569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060d0c449ac19344a93ef08af2d5bc63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 978209363}
+  minDistance: 1
+  maxDistance: 5
+  wheelSpeed: 100
+  sensitiveity: 100
 --- !u!1 &1742201958
 GameObject:
   m_ObjectHideFlags: 0
