@@ -11,6 +11,7 @@ public class EnemyAi : MonoBehaviour {
     private float maxDistanceToCheck = 6.0f;
     private float currentDistance;
     private Vector3 checkDirection;
+    private bool isChasePlayer;
 
     // Patrol state variables
     public Transform pointA;
@@ -32,8 +33,8 @@ public class EnemyAi : MonoBehaviour {
             pointB
         };
         currentTarget = 0;
+        isChasePlayer = false;
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
-        //navMeshAgent.isStopped = false;
     }
 
     private void FixedUpdate() {
@@ -50,8 +51,18 @@ public class EnemyAi : MonoBehaviour {
             } else {
                 animator.SetBool("isPlayerVisible", false);
             }
-        } else {
+        } 
+        else {
             animator.SetBool("isPlayerVisible", false);
+        }
+
+        if(isChasePlayer == true)
+        {
+            animator.SetBool("isPlayerChase", true);
+        }
+        else
+        {
+            animator.SetBool("isPlayerChase", false);
         }
 
         //Lastly, we get the distance to the next waypoint target
@@ -68,6 +79,17 @@ public class EnemyAi : MonoBehaviour {
                 currentTarget = 0;
                 break;
         }
+        navMeshAgent.SetDestination(waypoints[currentTarget].position);
+    }
+    public void StartChasePlayer()
+    {
+        isChasePlayer = true;
+        navMeshAgent.SetDestination(player.transform.position);
+    }
+
+    public void EndChasePlayer()
+    {
+        isChasePlayer = false;
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
 }
