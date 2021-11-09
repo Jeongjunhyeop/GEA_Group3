@@ -87,7 +87,7 @@ public class ObjectCtrl : MonoBehaviour
             if (randomNumber <= percentage[i])
             {
                 GameObject dropItem = dropItemPrefab[i];
-                Instantiate(dropItem, transform.position, Quaternion.identity);
+                Instantiate(dropItem, transform.position, transform.rotation);
                 return;
             }
             else
