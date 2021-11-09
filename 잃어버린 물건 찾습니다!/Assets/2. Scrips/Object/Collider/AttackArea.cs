@@ -16,14 +16,12 @@ public class AttackArea : MonoBehaviour
             other.SendMessage("Damage");
         }
     }
-
     private IEnumerator AutoDisable()
     {
         //0.1초 후에 오브젝트가 사라지도록 한다.
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         gameObject.SetActive(false);
     }
-
 
 }

@@ -48,7 +48,6 @@ public class CharacterAnimation : MonoBehaviour
 	{
 		animator.SetBool("OnGround", status.onGround);
 	}
-
 	public void OnAttackCollision()
 	{
 		attackCollision.SetActive(true);

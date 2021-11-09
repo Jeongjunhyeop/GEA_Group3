@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3b4a27532649b408d1f5417b5abae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1629975644
+--- !u!1 &866730197
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,8 +91,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1629975645}
-  - component: {fileID: 1629975646}
+  - component: {fileID: 866730198}
+  - component: {fileID: 866730199}
   m_Layer: 0
   m_Name: Grab
   m_TagString: Untagged
@@ -100,13 +100,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1629975645
+--- !u!4 &866730198
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629975644}
+  m_GameObject: {fileID: 866730197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -114,13 +114,13 @@ Transform:
   m_Father: {fileID: 4483658618797090}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1629975646
+--- !u!136 &866730199
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629975644}
+  m_GameObject: {fileID: 866730197}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1207076619}
   - component: {fileID: 1207076621}
   - component: {fileID: 1207076623}
-  - component: {fileID: 121061787}
+  - component: {fileID: 539258895}
   m_Layer: 0
   m_Name: Explosive
   m_TagString: Explosive
@@ -163,7 +163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 505687748}
-  - {fileID: 1629975645}
+  - {fileID: 866730198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,10 +273,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c1fa693e9004947887c9191d7fcf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
-  maxHp: 2
+  hp: 1
+  maxHp: 1
   objectName: Explosive
---- !u!114 &121061787
+--- !u!114 &539258895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
