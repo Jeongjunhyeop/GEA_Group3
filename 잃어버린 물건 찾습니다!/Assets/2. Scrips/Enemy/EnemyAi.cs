@@ -24,8 +24,8 @@ public class EnemyAi : MonoBehaviour {
     private void Awake() {
         player = GameObject.FindWithTag("Player");
         animator = gameObject.GetComponent<Animator>();
-        pointA = GameObject.Find("p1").transform;
-        pointB = GameObject.Find("p2").transform;
+        pointA = GameObject.Find("PatrolPoint1").transform;
+        pointB = GameObject.Find("PatrolPoint2").transform;
         navMeshAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         waypoints = new Transform[2] {
             pointA,
@@ -33,6 +33,7 @@ public class EnemyAi : MonoBehaviour {
         };
         currentTarget = 0;
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
+        //navMeshAgent.isStopped = false;
     }
 
     private void FixedUpdate() {
