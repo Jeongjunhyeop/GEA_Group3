@@ -38,8 +38,8 @@ public class Grabable : MonoBehaviour
 
     void grab()
     {
-        if (Input.GetMouseButtonDown(0) && isPlayerEnter &&
-            (playerState.grabbedThing == null))
+        if (Input.GetMouseButtonDown(0) && isPlayerEnter
+            && playerState.grabbedThing == null)
         {
             transform.SetParent(playerGrabPoint.transform);
             transform.localPosition = Vector3.zero;

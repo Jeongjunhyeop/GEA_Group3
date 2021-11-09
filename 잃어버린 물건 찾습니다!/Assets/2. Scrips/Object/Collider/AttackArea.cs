@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        StartCoroutine("AutoDisable");
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "ObjHit")
@@ -12,16 +17,13 @@ public class AttackArea : MonoBehaviour
         }
     }
 
-    //플레이어가 이 오브젝트를 잡을시
-    void Hold()
-    {   //공격콜라이더 활성화
-        gameObject.SetActive(true);
-    }
-    //플레이어가 이 오브젝트를 놓을시
-    void HandsOff()
+    private IEnumerator AutoDisable()
     {
-        //공격콜라이더 비활성화
+        //0.1초 후에 오브젝트가 사라지도록 한다.
+        yield return new WaitForSeconds(0.5f);
+
         gameObject.SetActive(false);
     }
+
 
 }

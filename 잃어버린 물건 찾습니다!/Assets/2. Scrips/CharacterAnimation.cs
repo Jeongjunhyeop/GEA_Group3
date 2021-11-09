@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterAnimation : MonoBehaviour
 {
+	[SerializeField]
+	private GameObject attackCollision;
+
 	Animator animator;
 	CharacterState status;
 	bool attacked = false;
@@ -44,5 +47,10 @@ public class CharacterAnimation : MonoBehaviour
 	void Update()
 	{
 		animator.SetBool("OnGround", status.onGround);
+	}
+
+	public void OnAttackCollision()
+	{
+		attackCollision.SetActive(true);
 	}
 }
