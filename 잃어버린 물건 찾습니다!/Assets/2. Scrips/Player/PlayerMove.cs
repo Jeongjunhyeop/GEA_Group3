@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
 
         move(h, v);
         jump();
+        Attack();
 
         if (Input.GetMouseButtonDown(2) && state.isHolding)
             Drop();
@@ -70,10 +71,19 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        if (state.isHolding && Input.GetMouseButtonDown(1))
+        {
+            animation.Attack();
+        }
+    }
+
     public void Hold(GameObject item)
     {
         SetGrab(item, true);
         state.isHolding = true;
+        state.grabbedThing = item;
     }
 
     void Drop()
@@ -83,6 +93,7 @@ public class PlayerMove : MonoBehaviour
 
         playerGrabPoint.transform.DetachChildren();
         state.isHolding = false;
+        state.grabbedThing = null;
     }
 
     void SetGrab(GameObject item, bool isHolding)

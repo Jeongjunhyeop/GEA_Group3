@@ -30,6 +30,11 @@ public class CharacterAnimation : MonoBehaviour
 		animator.SetTrigger("Jumping");
 	}
 
+	public void Attack()
+	{
+		animator.SetTrigger("Attack");
+	}
+
 	void Start()
 	{
 		animator = GetComponent<Animator>();

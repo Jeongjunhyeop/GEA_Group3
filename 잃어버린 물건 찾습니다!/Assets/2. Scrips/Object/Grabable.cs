@@ -7,6 +7,7 @@ public class Grabable : MonoBehaviour
     GameObject player;
     GameObject playerGrabPoint;
     PlayerMove playerMove;
+    CharacterState playerState;
 
     bool isPlayerEnter;
 
@@ -15,6 +16,7 @@ public class Grabable : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerGrabPoint = GameObject.FindGameObjectWithTag("GrabPoint");
         playerMove = player.GetComponent<PlayerMove>();
+        playerState = player.GetComponent<CharacterState>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +38,8 @@ public class Grabable : MonoBehaviour
 
     void grab()
     {
-        if (Input.GetMouseButtonDown(0) && isPlayerEnter)
+        if (Input.GetMouseButtonDown(0) && isPlayerEnter &&
+            (playerState.grabbedThing == null))
         {
             transform.SetParent(playerGrabPoint.transform);
             transform.localPosition = Vector3.zero;
