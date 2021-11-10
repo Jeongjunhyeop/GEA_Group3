@@ -13,12 +13,6 @@ public class EnemyAnimation : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
-    {
-
-    }
-
-
     public void SetIsPlayerVisible(bool onVisible)
     {
         animator.SetBool("isPlayerVisible", onVisible);
@@ -27,7 +21,7 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetFloat("distanceFromWaypoint", distancefromtarget);
     }
-    public void SetcurrentDistance(int currentdistance)
+    public void SetDistanceFromPlayer(float currentdistance)
     {
         animator.SetFloat("distanceFromPlayer", currentdistance);
     }
