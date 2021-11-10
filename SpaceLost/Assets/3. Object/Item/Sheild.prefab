@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33364583792881272}
   - component: {fileID: 23319836264959948}
   - component: {fileID: 12918042556287227}
+  - component: {fileID: -6041900678785005522}
   m_Layer: 0
   m_Name: Sheild
   m_TagString: Untagged
@@ -96,3 +97,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kind: 5
   rotateSpeed: 30
+--- !u!65 &-6041900678785005522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390804651538706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39371338, y: 0.31047088, z: 0.08066217}
+  m_Center: {x: 0, y: 0, z: -0.00033108518}

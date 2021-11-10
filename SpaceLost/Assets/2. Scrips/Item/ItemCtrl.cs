@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemCtrl : MonoBehaviour
 {
+
     public enum ItemKind
     {
         TimeUp, //게임플레이시간 증가
@@ -18,54 +19,27 @@ public class ItemCtrl : MonoBehaviour
     [SerializeField]
     private float rotateSpeed; //아이템 회전속도
 
-    private void Start()
-    {
-        if(kind == ItemKind.Empty)
-        {
+    private void Start(){
+        if(kind == ItemKind.Empty){
             Destroy(gameObject);
         }
     }
 
-    void Update()
-    {
+    void Update(){
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World); //아이템 회전
         StartCoroutine("DestroyItem");
-
     }
 
-    IEnumerator DestroyItem()
-    {
+    IEnumerator DestroyItem(){
         yield return new WaitForSecondsRealtime(10f);
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player") //플레이어와 충돌시
-        {
+    private void OnTriggerEnter(Collider other){
+        if(other.tag == "Player"){
+            CharacterState aStatus = other.GetComponent<CharacterState>();
+            aStatus.GetItem(kind);
             Destroy(gameObject); //아이템삭제
-
-            switch(kind)
-            {
-                case ItemKind.TimeUp:
-                    print("제한시간증가");
-                    break;
-                case ItemKind.SpeedUp:
-                    print("플레이어이동속도증가");
-                    break;
-                case ItemKind.SpeedDown:
-                    print("적이동속도감소");
-                    break;
-                case ItemKind.MissionObject:
-                    print("미션아이템획득");
-                    break;
-                case ItemKind.Nav:
-                    print("미션아이템위치표시");
-                    break;
-                case ItemKind.Sheild:
-                    print("적공격 1회 막기");
-                    break;
-            }
         }
     }
 }

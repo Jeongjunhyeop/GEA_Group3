@@ -53,4 +53,34 @@ public class CharacterState : MonoBehaviour
             onGround = true;
         }
     }
+
+    public void GetItem(ItemCtrl.ItemKind itemKind){
+        switch (itemKind){
+            case ItemCtrl.ItemKind.TimeUp:
+                //게임플레이시간증가
+                break;
+            case ItemCtrl.ItemKind.SpeedUp:
+                StartCoroutine("PlayerSpeedUp");
+                break;
+            case ItemCtrl.ItemKind.SpeedDown:
+                //적이동속도감소
+                break;
+            case ItemCtrl.ItemKind.MissionObject:
+                //미션아이템획득
+                break;
+            case ItemCtrl.ItemKind.Nav:
+                //미션아이템위치표시
+                break;
+            case ItemCtrl.ItemKind.Sheild:
+                //적공격 1회 막기
+                break;
+        }
+    }
+
+    IEnumerator PlayerSpeedUp()
+    {
+        moveSpeed += 5.0f;
+        yield return new WaitForSeconds(5.0f);
+        moveSpeed = basicMSpeed;
+    }
 }
