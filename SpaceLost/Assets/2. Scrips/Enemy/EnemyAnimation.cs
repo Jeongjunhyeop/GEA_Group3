@@ -7,17 +7,46 @@ public class EnemyAnimation : MonoBehaviour
     // General state machine variables
 
     private Animator animator;
+    CharacterState status;
 
+    bool isDown = false;
+    bool attacked = false;
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
+        status = gameObject.GetComponent<CharacterState>();
+    }
+
+    public bool IsAttacked()
+    {
+        return attacked;
+    }
+
+
+    void OnAttackCollision()
+    {
+        Debug.Log("StartAttackHit");
+    }
+
+    void EndAttackCollision()
+
+    {
+        Debug.Log("EndAttackHit");
+    }
+
+    void EndAttack()
+    {
+        attacked = true;
     }
 
     private void FixedUpdate()
     {
-
+        if (attacked && !status.isAttacking)
+        {
+            attacked = false;
+        }
+        animator.SetBool("isAttack", (!attacked && status.isAttacking));
     }
-
 
     public void SetIsPlayerVisible(bool onVisible)
     {
@@ -27,7 +56,7 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetFloat("distanceFromWaypoint", distancefromtarget);
     }
-    public void SetcurrentDistance(int currentdistance)
+    public void SetDistanceFromPlayer(float currentdistance)
     {
         animator.SetFloat("distanceFromPlayer", currentdistance);
     }
@@ -35,7 +64,6 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetBool("isPlayerChase", true);
     }
-
     public void EndChasePlayer()
     {
         animator.SetBool("isPlayerChase", false);
