@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour
 
     float rotationSpeed = 5f;
 
+    private float m_timeSinceAttack = 0.0f;
+    public float m_attackableTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,8 @@ public class PlayerMove : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
+        m_timeSinceAttack += Time.deltaTime;
 
         move(h, v);
         jump();
@@ -73,9 +78,12 @@ public class PlayerMove : MonoBehaviour
 
     void Attack()
     {
-        if (state.isHolding && Input.GetMouseButtonDown(1))
+        if (state.isHolding && Input.GetMouseButtonDown(1) && m_timeSinceAttack > m_attackableTime)
         {
             animation.Attack();
+
+            // Reset timer
+            m_timeSinceAttack = 0.0f;
         }
     }
 
