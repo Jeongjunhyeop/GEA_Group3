@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchArea : MonoBehaviour
+public class SearchArea : StateMachineBehaviour
 {
-	EnemyCtrl enemyCtrl;
-	void Start()
-	{
-		// EnemyCtrl을 미리 준비한다.
-		enemyCtrl = transform.root.GetComponent<EnemyCtrl>();
-	}
-
-	void OnTriggerStay(Collider other)
-	{
-		// Player태그를 타깃으로 한다.
-		if (other.tag == "Player")
-			enemyCtrl.SetAttackTarget(other.transform);
-	}
-
-	void OnTriggerExit(Collider other)
-	{
-		// Player태그를 타깃으로 한다.
-		if (other.tag == "Player")
-			enemyCtrl.ResetAttackTarget();
-	}
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        EnemyAi EnemyAi = animator.gameObject.GetComponent<EnemyAi>();
+        EnemyAi.StartChasePlayer();
+    }
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        EnemyAi EnemyAi = animator.gameObject.GetComponent<EnemyAi>();
+        EnemyAi.EndChasePlayer();
+    }
 }
