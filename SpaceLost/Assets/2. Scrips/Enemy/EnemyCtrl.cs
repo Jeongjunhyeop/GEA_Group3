@@ -5,10 +5,27 @@ using UnityEngine;
 public class EnemyCtrl : MonoBehaviour
 {
 	CharacterState status;
-	CharacterAnimation charaAnimation;
-	EnemyMove EnemyMove;
+	EnemyAnimation enemyAnimation;
+	EnemyMove enemyMove;
 	Transform attackTarget;
 	public GameObject hitEffect;
+
+	private GameObject player;
+	private Ray ray;
+	private RaycastHit hit;
+	private float maxDistanceToCheck = 6.0f;
+	private float currentDistance;
+	private Vector3 checkDirection;
+	private bool isChasePlayer;
+	// Patrol state variables
+	public Transform pointA;
+	public Transform pointB;
+	public UnityEngine.AI.NavMeshAgent navMeshAgent;
+
+	private int currentTarget;
+	private float distanceFromTarget;
+	private Transform[] waypoints = null;
+
 
 	// 대기 시간은 2초로 설정한다.
 	public float waitBaseTime = 2.0f;
@@ -24,14 +41,14 @@ public class EnemyCtrl : MonoBehaviour
 	// 스테이트 종류.
 	enum State
 	{
-		Walking,    // 탐색.
+		Patroling,    // 탐색.
 		Chasing,    // 추적.
 		Attacking,  // 공격.
 		Grogging,       // 폭발물에 의한 다운.
 	};
 
-	State state = State.Walking;        // 현재 스테이트.
-	State nextState = State.Walking;    // 다음 스테이트.
+	State state = State.Patroling;        // 현재 스테이트.
+	State nextState = State.Patroling;    // 다음 스테이트.
 
 	public AudioClip deathSeClip;
 	AudioSource deathSeAudio;
@@ -41,21 +58,60 @@ public class EnemyCtrl : MonoBehaviour
 	void Start()
 	{
 		status = GetComponent<CharacterState>();
-		charaAnimation = GetComponent<CharacterAnimation>();
-		EnemyMove = GetComponent<EnemyMove>();
+		enemyAnimation = GetComponent<EnemyAnimation>();
+		enemyMove = GetComponent<EnemyMove>();
 		// 초기 위치를 저장한다.
 		basePosition = transform.position;
 		// 대기 시간.
 		waitTime = waitBaseTime;
+
+		player = GameObject.FindWithTag("Player");
+
+		pointA = GameObject.Find("PatrolPoint1").transform;
+		pointB = GameObject.Find("PatrolPoint2").transform;
+		navMeshAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+		waypoints = new Transform[2] {
+			pointA,
+			pointB
+		};
+		currentTarget = 0;
+		isChasePlayer = false;
+		navMeshAgent.SetDestination(waypoints[currentTarget].position);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		//First we check distance from the player 
+		currentDistance = Vector3.Distance(player.transform.position, transform.position);
+		//Then we check for visibility
+		checkDirection = player.transform.position - transform.position;
+		ray = new Ray(transform.position, checkDirection);
+		if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
+		{
+			if (hit.collider.gameObject == player)
+			{
+				enemyAnimation.SetIsPlayerVisible(true);
+			}
+			else
+			{
+				enemyAnimation.SetIsPlayerVisible(false);
+			}
+		}
+		else
+		{
+			enemyAnimation.SetIsPlayerVisible(false);
+		}
+		//Lastly, we get the distance to the next waypoint target
+		distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
+
+
+
+		
 		switch (state)
 		{
-			case State.Walking:
-				Walking();
+			case State.Patroling:
+				Patroling();
 				break;
 			case State.Chasing:
 				Chasing();
@@ -70,8 +126,8 @@ public class EnemyCtrl : MonoBehaviour
 			state = nextState;
 			switch (state)
 			{
-				case State.Walking:
-					WalkStart();
+				case State.Patroling:
+					PatrolStart();
 					break;
 				case State.Chasing:
 					ChaseStart();
@@ -86,19 +142,31 @@ public class EnemyCtrl : MonoBehaviour
 		}
 	}
 
-
+	public void SetNextPoint()
+	{
+		switch (currentTarget)
+		{
+			case 0:
+				currentTarget = 1;
+				break;
+			case 1:
+				currentTarget = 0;
+				break;
+		}
+		navMeshAgent.SetDestination(waypoints[currentTarget].position);
+	}
 	// 스테이트를 변경한다.
 	void ChangeState(State nextState)
 	{
 		this.nextState = nextState;
 	}
 
-	void WalkStart()
+	void PatrolStart()
 	{
 		StateStartCommon();
 	}
 
-	void Walking()
+	void Patroling()
 	{
 		// 대기 시간이 아직 남았다면.
 		if (waitTime > 0.0f)
@@ -119,7 +187,7 @@ public class EnemyCtrl : MonoBehaviour
 		else
 		{
 			// 목적지에 도착한다.
-			if (EnemyMove.Arrived())
+			if (enemyMove.Arrived())
 			{
 				// 대기 상태로 전환한다.
 				waitTime = Random.Range(waitBaseTime, waitBaseTime * 2.0f);
@@ -127,6 +195,7 @@ public class EnemyCtrl : MonoBehaviour
 			// 타겟을 발견하면 추적한다.
 			if (attackTarget)
 			{
+				navMeshAgent.SetDestination(player.transform.position);
 				ChangeState(State.Chasing);
 			}
 		}
@@ -141,11 +210,13 @@ public class EnemyCtrl : MonoBehaviour
 	{
 		if (attackTarget == null)
 		{
-			ChangeState(State.Walking);
+			ChangeState(State.Patroling);
+			navMeshAgent.SetDestination(waypoints[currentTarget].position);
 			return;
 		}
+		navMeshAgent.SetDestination(player.transform.position);
 		// 이동할 곳을 플레이어에 설정한다.
-		SendMessage("SetDestination", attackTarget.position);
+		//SendMessage("SetDestination", player.transform.position);
 		// 2미터 이내로 접근하면 공격한다.
 		if (Vector3.Distance(attackTarget.position, transform.position) <= 2.0f)
 		{
