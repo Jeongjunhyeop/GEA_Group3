@@ -6,6 +6,8 @@ public class EnemyCtrl : MonoBehaviour
 {
 	CharacterState status;
 	EnemyAnimation enemyAnimation;
+	EnemyMove enemyMove;
+	Transform attackTarget;
 	public GameObject hitEffect;
 
 	private GameObject player;
@@ -24,6 +26,15 @@ public class EnemyCtrl : MonoBehaviour
 	private float distanceFromTarget;
 	private Transform[] waypoints = null;
 
+
+	// 대기 시간은 2초로 설정한다.
+	public float waitBaseTime = 2.0f;
+	// 남은 대기 시간.
+	float waitTime;
+	// 이동 범위 5미터.
+	public float walkRange = 5.0f;
+	// 초기 위치를 저장해 둘 변수.
+	public Vector3 basePosition;
 	// 복수의 아이템을 저장할 수 있는 배열로 한다.
 	public GameObject[] dropItemPrefab;
 
@@ -48,6 +59,11 @@ public class EnemyCtrl : MonoBehaviour
 	{
 		status = GetComponent<CharacterState>();
 		enemyAnimation = GetComponent<EnemyAnimation>();
+		enemyMove = GetComponent<EnemyMove>();
+		// 초기 위치를 저장한다.
+		basePosition = transform.position;
+		// 대기 시간.
+		waitTime = waitBaseTime;
 
 		player = GameObject.FindWithTag("Player");
 
@@ -68,7 +84,6 @@ public class EnemyCtrl : MonoBehaviour
 	{
 		//First we check distance from the player 
 		currentDistance = Vector3.Distance(player.transform.position, transform.position);
-		enemyAnimation.SetDistanceFromPlayer(currentDistance);
 		//Then we check for visibility
 		checkDirection = player.transform.position - transform.position;
 		ray = new Ray(transform.position, checkDirection);
@@ -89,9 +104,10 @@ public class EnemyCtrl : MonoBehaviour
 		}
 		//Lastly, we get the distance to the next waypoint target
 		distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
-		enemyAnimation.SetDistanceFromWayPoint(distanceFromTarget);
 
 
+
+		
 		switch (state)
 		{
 			case State.Patroling:
@@ -152,11 +168,36 @@ public class EnemyCtrl : MonoBehaviour
 
 	void Patroling()
 	{
-		// 타겟을 발견하면 추적한다.
-		if (player.transform)
+		// 대기 시간이 아직 남았다면.
+		if (waitTime > 0.0f)
 		{
-			navMeshAgent.SetDestination(player.transform.position);
-			ChangeState(State.Chasing);
+			// 대기 시간을 줄인다.
+			waitTime -= Time.deltaTime;
+			// 대기 시간이 없어지면.
+			if (waitTime <= 0.0f)
+			{
+				// 범위 내의 어딘가.
+				Vector2 randomValue = Random.insideUnitCircle * walkRange;
+				// 이동할 곳을 설정한다.
+				Vector3 destinationPosition = basePosition + new Vector3(randomValue.x, 0.0f, randomValue.y);
+				// 목적지를 지정한다.
+				SendMessage("SetDestination", destinationPosition);
+			}
+		}
+		else
+		{
+			// 목적지에 도착한다.
+			if (enemyMove.Arrived())
+			{
+				// 대기 상태로 전환한다.
+				waitTime = Random.Range(waitBaseTime, waitBaseTime * 2.0f);
+			}
+			// 타겟을 발견하면 추적한다.
+			if (attackTarget)
+			{
+				navMeshAgent.SetDestination(player.transform.position);
+				ChangeState(State.Chasing);
+			}
 		}
 	}
 	// 추적 시작. 
@@ -167,7 +208,7 @@ public class EnemyCtrl : MonoBehaviour
 	// 추적 중. 
 	void Chasing()
 	{
-		if (Vector3.Distance(player.transform.position, transform.position) >= 6.0f)
+		if (attackTarget == null)
 		{
 			ChangeState(State.Patroling);
 			navMeshAgent.SetDestination(waypoints[currentTarget].position);
@@ -177,7 +218,7 @@ public class EnemyCtrl : MonoBehaviour
 		// 이동할 곳을 플레이어에 설정한다.
 		//SendMessage("SetDestination", player.transform.position);
 		// 2미터 이내로 접근하면 공격한다.
-		if (Vector3.Distance(player.transform.position, transform.position) <= 2.0f)
+		if (Vector3.Distance(attackTarget.position, transform.position) <= 2.0f)
 		{
 			ChangeState(State.Attacking);
 		}
@@ -190,7 +231,11 @@ public class EnemyCtrl : MonoBehaviour
 		status.isAttacking = true;
 
 		// 적이 있는 방향으로 돌아본다.
-		Vector3 targetDirection = (player.transform.position - transform.position).normalized;
+		Vector3 targetDirection = (attackTarget.position - transform.position).normalized;
+		SendMessage("SetDirection", targetDirection);
+
+		// 이동을 멈춘다.
+		SendMessage("StopMove");
 	}
 	/*
 	// 공격 중 처리.
@@ -241,5 +286,14 @@ public class EnemyCtrl : MonoBehaviour
 	{
 		status.isAttacking = false;
 		status.isGrogging = false;
+	}
+	// 공격 대상을 설정한다. 
+	public void SetAttackTarget(Transform target)
+	{
+		attackTarget = target;
+	}
+	public void ResetAttackTarget()
+	{
+		attackTarget = null;
 	}
 }
