@@ -24,7 +24,7 @@ public class CheckObject : MonoBehaviour
         if(!gameFail)
         {
             GameTimer += Time.deltaTime;
-            if(GameTimer > 30)
+            if(GameTimer > 60)
             {
                 gameFail = true;
                 Debug.Log("GameFail");//실패 씬 넘어가는 코드 작성
