@@ -13,12 +13,22 @@ public class SceneButtonManager : MonoBehaviour
 
     public void loadTestScene()
     {
-        SceneManager.LoadScene("PlayerDemo");
+        SceneManager.LoadScene("11.11DemoScene");
     }
 
     public void loadMainScene()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void loadClearScene()
+    {
+        SceneManager.LoadScene("ClearScene");
+    }
+
+    public void loadFailScene()
+    {
+        SceneManager.LoadScene("FailScene");
     }
 
     public void GameExit()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class inGameUi : MonoBehaviour
 {
@@ -20,5 +21,11 @@ public class inGameUi : MonoBehaviour
     {
         limitTime -= Time.deltaTime;
         TargetImage.fillAmount = limitTime / startTime;
+
+        if (limitTime <= 0)
+        {
+            gameObject.GetComponent<SceneButtonManager>().loadFailScene();
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

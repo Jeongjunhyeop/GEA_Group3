@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class CheckObject : MonoBehaviour
 {
@@ -38,6 +38,8 @@ public class CheckObject : MonoBehaviour
             if(ObjTimer > 3)
             {
                 Objectin = true;
+                SceneManager.LoadScene("ClearScene");
+                Cursor.lockState = CursorLockMode.None;
                 Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
                 ObjTimer = 0;
             }
