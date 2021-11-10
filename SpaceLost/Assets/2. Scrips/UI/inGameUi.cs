@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class inGameUi : MonoBehaviour
 {
-    public float limitTime = 100;
+    public float limitTime = 120f;
     private float startTime;
     public Image TargetImage;
 
@@ -25,6 +25,7 @@ public class inGameUi : MonoBehaviour
         if (limitTime <= 0)
         {
             gameObject.GetComponent<SceneButtonManager>().loadFailScene();
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
     }

@@ -40,6 +40,8 @@ public class SceneButtonManager : MonoBehaviour
     {
         if (Input.GetKey("escape"))
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("MainScene");
         }
     }

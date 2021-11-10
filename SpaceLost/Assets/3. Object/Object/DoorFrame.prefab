@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4064495275394158}
   - component: {fileID: 33766109078131438}
   - component: {fileID: 23266417652569830}
-  - component: {fileID: 855512626}
+  - component: {fileID: 902593670}
   m_Layer: 0
   m_Name: DoorFrame
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1298957744236434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.9, y: 1.12, z: 1}
   m_Children:
   - {fileID: 4996223008371051}
   m_Father: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4930c6ffa5b9b9f4098249a43abf8506, type: 2}
+  - {fileID: 2100000, guid: a3cd22eceea5e8548b10cdb5d9b49a25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,8 +83,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &855512626
-BoxCollider:
+--- !u!64 &902593670
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,9 +93,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3071117, y: 2.253556, z: 0.17289314}
-  m_Center: {x: 0.65355587, y: 1.126778, z: 0.08644657}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c7bd79f25c690294f893f8905d2264f5, type: 3}
 --- !u!95 &1410097640
 Animator:
   serializedVersion: 3
@@ -184,6 +185,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23456306459307652, guid: b730767de0f26d64088437f3bddbedd2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e6d9344d5bbb9a4abca1058f4e295d6, type: 2}
     m_RemovedComponents:
     - {fileID: 5673810992046290166, guid: b730767de0f26d64088437f3bddbedd2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b730767de0f26d64088437f3bddbedd2, type: 3}

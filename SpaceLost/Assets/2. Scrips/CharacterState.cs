@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterState : MonoBehaviour
 {
+    inGameUi gameUi;
     //현재 상태
     public bool isAttacking = false;
     public bool isHolding = false;
@@ -31,6 +32,7 @@ public class CharacterState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameUi = FindObjectOfType<inGameUi>();
         //현재 속도와 점프력을 초기화
         moveSpeed = basicMSpeed;
         jumpPower = basicJPower;
@@ -57,6 +59,7 @@ public class CharacterState : MonoBehaviour
     public void GetItem(ItemCtrl.ItemKind itemKind){
         switch (itemKind){
             case ItemCtrl.ItemKind.TimeUp:
+                gameUi.limitTime += 5f;
                 //게임플레이시간증가
                 break;
             case ItemCtrl.ItemKind.SpeedUp:

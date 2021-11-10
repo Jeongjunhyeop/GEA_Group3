@@ -24,7 +24,7 @@ public class CheckObject : MonoBehaviour
         if(!gameFail)
         {
             GameTimer += Time.deltaTime;
-            if(GameTimer > 60)
+            if(GameTimer > 120)
             {
                 gameFail = true;
                 Debug.Log("GameFail");//실패 씬 넘어가는 코드 작성
@@ -39,6 +39,7 @@ public class CheckObject : MonoBehaviour
             {
                 Objectin = true;
                 SceneManager.LoadScene("ClearScene");
+                Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
                 ObjTimer = 0;
