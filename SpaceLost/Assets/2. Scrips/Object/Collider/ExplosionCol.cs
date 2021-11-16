@@ -16,9 +16,6 @@ public class ExplosionCol : MonoBehaviour
             case "ObjHit":
                 other.SendMessage("Damage");
                 break;
-            case "Switch":
-                other.SendMessage("Damage");
-                break;
 
             //case "Player":
             //case "Enemy":

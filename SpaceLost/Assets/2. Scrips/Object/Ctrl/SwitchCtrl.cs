@@ -6,10 +6,10 @@ public class SwitchCtrl : MonoBehaviour
 {
     DoorCtrl door;
     ObjectStatus status;
-
     
     private void OnEnable()
     {
+        
         door = FindObjectOfType<DoorCtrl>();
         status = GetComponent<ObjectStatus>();
         door.count += 1; //버튼 누를때마다 +1;
@@ -19,4 +19,6 @@ public class SwitchCtrl : MonoBehaviour
     {
         door.count -= 1;
     }
+
+
 }

@@ -38,11 +38,11 @@ public class SceneButtonManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKey("escape"))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("MainScene");
-        }
+        //if (Input.GetKey("escape"))
+        //{
+        //    Cursor.visible = true;
+        //    Cursor.lockState = CursorLockMode.None;
+        //    SceneManager.LoadScene("MainScene");
+        //}
     }
 }
