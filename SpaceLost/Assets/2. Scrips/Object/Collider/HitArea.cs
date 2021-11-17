@@ -12,15 +12,16 @@ public class HitArea : MonoBehaviour
         StartCoroutine("Active");
         switchCollider.enabled = false;
     }
+    IEnumerator Active()
+    {
+        yield return new WaitForSeconds(0.5f);
+        switchCollider.enabled = true;
+    }
     void Damage()
     {
         transform.GetComponentInParent<ObjectCtrl>().SendMessage("Damage");
 
     }
 
-    IEnumerator Active()
-    {
-        yield return new WaitForSeconds(0.5f);
-        switchCollider.enabled = true;
-    }
+
 }
