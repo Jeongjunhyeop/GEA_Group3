@@ -13,7 +13,6 @@ public class ItemCtrl : MonoBehaviour
         Empty, //꽝
         Nav, //미션아이템 위치 표시
         Sheild, //공격 1회 막기
-        MissionObject, //미션아이템
     };
     public ItemKind kind;
     [SerializeField]
@@ -27,13 +26,8 @@ public class ItemCtrl : MonoBehaviour
 
     void Update(){
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World); //아이템 회전
-        //StartCoroutine("DestroyItem");
     }
 
-    //IEnumerator DestroyItem(){
-    //    yield return new WaitForSecondsRealtime(10f);
-    //    Destroy(gameObject);
-    //}
 
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
