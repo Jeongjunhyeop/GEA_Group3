@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ItemCtrl : MonoBehaviour
 {
-
+    public enum ItemDestoryKind
+    {
+        DontDestroy,
+        Destroy,
+    }
     public enum ItemKind
     {
         TimeUp, //게임플레이시간 증가
@@ -15,12 +19,25 @@ public class ItemCtrl : MonoBehaviour
         Sheild, //공격 1회 막기
     };
     public ItemKind kind;
+    public ItemDestoryKind desKind;
     [SerializeField]
     private float rotateSpeed; //아이템 회전속도
 
     private void Start(){
-        if(kind == ItemKind.Empty){
-            Destroy(gameObject);
+        if (desKind == ItemDestoryKind.Destroy)
+        {
+            StartCoroutine("ItemDestroy");
+            if (kind == ItemKind.Empty)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (kind == ItemKind.Empty)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -35,5 +52,11 @@ public class ItemCtrl : MonoBehaviour
             aStatus.GetItem(kind);
             Destroy(gameObject); //아이템삭제
         }
+    }
+
+    IEnumerator ItemDestroy()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        Destroy(gameObject);
     }
 }
