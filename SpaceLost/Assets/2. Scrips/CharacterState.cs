@@ -25,6 +25,7 @@ public class CharacterState : MonoBehaviour
     public float jumpPower = 5f;
     //초기 공격력
     public int ATC = 1;
+    public bool powerBoost = false;
 
     //현재 들고있는 물건
     public GameObject grabbedThing = null;
@@ -67,9 +68,6 @@ public class CharacterState : MonoBehaviour
                 break;
             case ItemCtrl.ItemKind.SpeedDown:
                 //적이동속도감소
-                break;
-            case ItemCtrl.ItemKind.MissionObject:
-                //미션아이템획득
                 break;
             case ItemCtrl.ItemKind.Nav:
                 //미션아이템위치표시
