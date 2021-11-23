@@ -18,9 +18,9 @@ public class ExplosionCol : MonoBehaviour
                 break;
 
             //case "Player":
-            //case "Enemy":
-            //    other.SendMessage("Grroging");
-            //    break;
+            case "Enemy":
+                other.SendMessage("explosionDamage");
+                break;
 
         }
     }

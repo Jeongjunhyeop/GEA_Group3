@@ -9,12 +9,13 @@ public class EnemyAnimation : MonoBehaviour
     private Animator animator;
     CharacterState status;
 
-    bool isDown = false;
+    bool isDownfinish = false;
     bool attacked = false;
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         status = gameObject.GetComponent<CharacterState>();
+
     }
 
     public bool IsAttacked()
@@ -29,11 +30,13 @@ public class EnemyAnimation : MonoBehaviour
     }
 
     void EndAttackCollision()
-
     {
         Debug.Log("EndAttackHit");
     }
-
+    void isDownEnd()
+    {
+        animator.SetBool("isDownEnd", true);
+    }
     void EndAttack()
     {
         attacked = true;
@@ -68,5 +71,21 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetBool("isPlayerChase", false);
     }
+    public void StartPatrol()
+    {
+        animator.SetBool("isPatrol", true);
+    }
+    public void EndPatrol()
+    {
+        animator.SetBool("isPatrol", false);
+    }
 
+    public void StartIsDown()
+    {
+        animator.SetBool("isDown", true);
+    }
+    public void EndIsDown()
+    {
+        animator.SetBool("isDown", false);
+    }
 }
