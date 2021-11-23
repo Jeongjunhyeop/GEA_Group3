@@ -75,7 +75,7 @@ public class CharacterState : MonoBehaviour
     IEnumerator PlayerSpeedUp()
     {
         moveSpeed += 5.0f;
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSecondsRealtime(5.0f);
         moveSpeed = basicMSpeed;
     }
 }
