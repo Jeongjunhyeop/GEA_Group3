@@ -69,12 +69,6 @@ public class CharacterState : MonoBehaviour
             case ItemCtrl.ItemKind.SpeedDown:
                 //적이동속도감소
                 break;
-            case ItemCtrl.ItemKind.Nav:
-                //미션아이템위치표시
-                break;
-            case ItemCtrl.ItemKind.Sheild:
-                //적공격 1회 막기
-                break;
         }
     }
 

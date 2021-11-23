@@ -15,8 +15,7 @@ public class ItemCtrl : MonoBehaviour
         SpeedUp, //플레이어 이동속도 일시 증가
         SpeedDown, //적 이동속도 일시 감소
         Empty, //꽝
-        Nav, //미션아이템 위치 표시
-        Sheild, //공격 1회 막기
+        GoldWeapon,
     };
     public ItemKind kind;
     public ItemDestoryKind desKind;
@@ -47,7 +46,7 @@ public class ItemCtrl : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other){
-        if(other.tag == "Player"){
+        if(other.tag == "Player" && (kind != ItemKind.GoldWeapon)){
             CharacterState aStatus = other.GetComponent<CharacterState>();
             aStatus.GetItem(kind);
             Destroy(gameObject); //아이템삭제
