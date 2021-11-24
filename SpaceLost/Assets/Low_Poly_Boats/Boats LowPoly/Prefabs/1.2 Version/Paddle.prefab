@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2117150364939930455}
   - component: {fileID: 3084537619864503538}
   - component: {fileID: 948726623963361336}
-  - component: {fileID: 8247427609818777591}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -82,17 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8247427609818777591
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597213978669683181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3256123080762291287, guid: b990e7958191eca4e89757b013d69fee, type: 3}

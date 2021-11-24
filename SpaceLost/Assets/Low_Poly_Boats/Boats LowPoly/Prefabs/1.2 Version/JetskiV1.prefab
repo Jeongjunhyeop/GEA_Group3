@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5136231650899946630}
   - component: {fileID: 8135846101481513763}
   - component: {fileID: 6272568312503048169}
-  - component: {fileID: 1377868143621756188}
   m_Layer: 0
   m_Name: JetskiV1
   m_TagString: Untagged
@@ -82,17 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1377868143621756188
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5479860217832420924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6313421200481147287, guid: bb4e271d4c3affa45bd027ab7d1b1e51, type: 3}
