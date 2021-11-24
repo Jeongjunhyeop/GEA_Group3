@@ -59,6 +59,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad939c1ff4fc0d40ba11bc347ad9bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1575066568
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4426300432490287034}
+    m_Modifications:
+    - target: {fileID: 1368782967120030, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_Name
+      value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901495017684040, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199474463707621028, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199555301852671132, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50ba925111528f44a97c418ec72d9882, type: 3}
 --- !u!1001 &4426300432490157370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosionEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b994820a727938849893b5ffd8c2f068, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: b994820a727938849893b5ffd8c2f068, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -77,6 +158,10 @@ PrefabInstance:
     - target: {fileID: 100010, guid: b994820a727938849893b5ffd8c2f068, type: 3}
       propertyPath: m_Name
       value: ExplosionEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: b994820a727938849893b5ffd8c2f068, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b994820a727938849893b5ffd8c2f068, type: 3}
       propertyPath: m_RootOrder
