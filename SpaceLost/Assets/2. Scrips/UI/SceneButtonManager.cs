@@ -31,6 +31,31 @@ public class SceneButtonManager : MonoBehaviour
         SceneManager.LoadScene("FailScene");
     }
 
+    public void loadStage1Scene()
+    {
+        SceneManager.LoadScene("Stage1");
+    }
+
+    public void loadStage2Scene()
+    {
+        SceneManager.LoadScene("Stage2");
+    }
+
+    public void loadStage3Scene()
+    {
+        SceneManager.LoadScene("3.City");
+    }
+
+    public void loadStage4Scene()
+    {
+        SceneManager.LoadScene("Stage4");
+    }
+
+    public void loadStage5Scene()
+    {
+        SceneManager.LoadScene("BossStage");
+    }
+
     public void GameExit()
     {
         Application.Quit();
