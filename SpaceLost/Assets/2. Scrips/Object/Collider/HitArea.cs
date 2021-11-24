@@ -17,10 +17,14 @@ public class HitArea : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         switchCollider.enabled = true;
     }
-    void Damage()
+    void Damage(AttackArea.AttackInfo attackInfo)
     {
-        transform.GetComponentInParent<ObjectCtrl>().SendMessage("Damage");
+        transform.GetComponentInParent<ObjectCtrl>().SendMessage("Damage", attackInfo);
 
+    }
+    void Explosion()
+    {
+        transform.GetComponentInParent<ObjectCtrl>().SendMessage("Explosion");
     }
 
 

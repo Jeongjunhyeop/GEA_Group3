@@ -56,4 +56,7 @@ public class CharacterAnimation : MonoBehaviour
     {
 		attackCollision.SetActive(false);
 	}
+	public void EndAttack()
+	{
+	}
 }
