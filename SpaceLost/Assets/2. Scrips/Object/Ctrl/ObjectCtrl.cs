@@ -133,7 +133,7 @@ public class ObjectCtrl : MonoBehaviour
     }
     void Explosion()
     {
-        status.hp -= 2;
+        status.hp -= 1;
 
         if (status.hp <= 0 && !(gameObject.tag == "Explosive"))
         {
