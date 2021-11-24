@@ -20,7 +20,6 @@ public class ObjectCtrl : MonoBehaviour
     [Header("프리팹")]
     public GameObject[] dropItemPrefab; //아이템 프리팹저장
 
-    CharacterState playerState;
     ObjectStatus status; //오브젝트 상태
     private MeshRenderer meshRenderer;
     private int randomNumber;
@@ -79,28 +78,21 @@ public class ObjectCtrl : MonoBehaviour
     {
         if (dropItemPrefab.Length == 0)//아이템프리팹이 안 들어가있을경우
             return;
-        if (gameObject.tag == "Switch")
-        {
-            GameObject dropItem = dropItemPrefab[0];
-            Instantiate(dropItem, transform.position, transform.rotation);
-        }
 
-        else
-        {
-            randomNumber = Random.Range(0, total);
 
-            for (int i = 0; i < percentage.Length; i++)
+        randomNumber = Random.Range(0, total);
+
+        for (int i = 0; i < percentage.Length; i++)
+        {
+            if (randomNumber <= percentage[i])
             {
-                if (randomNumber <= percentage[i])
-                {
-                    GameObject dropItem = dropItemPrefab[i];
-                    Instantiate(dropItem, transform.position, Quaternion.identity);
-                    return;
-                }
-                else
-                {
-                    randomNumber -= percentage[i];
-                }
+                GameObject dropItem = dropItemPrefab[i];
+                Instantiate(dropItem, transform.position, transform.rotation);
+                return;
+            }
+            else
+            {
+                randomNumber -= percentage[i];
             }
         }
     }
@@ -108,30 +100,10 @@ public class ObjectCtrl : MonoBehaviour
     {
         dropItem(); //아이템떨굼
         Destroy(gameObject); //오브젝트 삭제
-        
 
     }
 
-    void Damage(AttackArea.AttackInfo attackInfo)
-    {
-        //status.hp -= 1;
-        status.hp -= attackInfo.attackPower;
-
-        if (status.hp <= 0 && !(gameObject.tag == "Explosive"))
-        {
-            status.hp = 0;
-            ChangeState(State.Destroy);
-
-
-        }
-        if (status.hp <= 0 && gameObject.tag == "Explosive")
-        {
-            status.hp = 0;
-            StartCoroutine("DestroyBomb");
-        }
-
-    }
-    void Explosion()
+    void Damage()
     {
         status.hp -= 1;
 
@@ -147,6 +119,7 @@ public class ObjectCtrl : MonoBehaviour
             status.hp = 0;
             StartCoroutine("DestroyBomb");
         }
+
     }
 
     IEnumerator DestroyBomb()

@@ -202,14 +202,14 @@ public class EnemyCtrl : MonoBehaviour
             enemyAnimation.StartIsDown();
         }
     }
-    void Damage(AttackArea.AttackInfo attackInfo)
-    {
-        if(attackInfo.attackPower >= 10)
-        {
-            enemyHp = 0;
-            enemyAnimation.StartIsDown();
-        }
-    }
+    //void Damage(AttackArea.AttackInfo attackInfo)
+    //{
+    //    if(attackInfo.attackPower >= 10)
+    //    {
+    //        enemyHp = 0;
+    //        enemyAnimation.StartIsDown();
+    //    }
+    //}
     void EndGrog()
     {
         navMeshAgent.enabled = true;

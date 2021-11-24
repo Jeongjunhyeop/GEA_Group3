@@ -57,8 +57,10 @@ public class CharacterState : MonoBehaviour
         }
     }
 
-    public void GetItem(ItemCtrl.ItemKind itemKind){
-        switch (itemKind){
+    public void GetItem(ItemCtrl.ItemKind itemKind)
+    {
+        switch (itemKind)
+        {
             case ItemCtrl.ItemKind.TimeUp:
                 gameUi.limitTime += 5f;
                 //게임플레이시간증가
