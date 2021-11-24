@@ -11,21 +11,14 @@ public class CharacterAnimation : MonoBehaviour
 	CharacterState status;
 	bool attacked = false;
 
-	public void Move(float h, float v)
+	public void Move(bool isMove)
 	{
-		if (h == 0 && v == 0)
-		{
-			animator.SetBool("movingTward", false);
-			animator.SetBool("movingBackward", false);
-		}
-		else if (v < 0)
-		{
-			animator.SetBool("movingBackward", true);
-		}
-		else if (h > 0 || v > 0)
+		if (isMove)
 		{
 			animator.SetBool("movingTward", true);
 		}
+		else
+			animator.SetBool("movingTward", false);
 	}
 
 	public void Jump()
