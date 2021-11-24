@@ -14,13 +14,13 @@ public class ExplosionCol : MonoBehaviour
         switch(other.tag)
         {
             case "ObjHit":
-                other.SendMessage("Damage");
+                other.SendMessage("Explosion");
                 break;
 
             //case "Player":
-            //case "Enemy":
-            //    other.SendMessage("Grroging");
-            //    break;
+            case "Enemy":
+                other.SendMessage("explosionDamage");
+                break;
 
         }
     }
