@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
 {
-    // General state machine variables
+    // General
+    //
+    //
+    // machine variables
 
     private Animator animator;
     CharacterState status;
@@ -24,36 +27,44 @@ public class EnemyAnimation : MonoBehaviour
     }
 
 
-    void OnAttackCollision()
+    public void OnAttackCollision()
     {
-        Debug.Log("StartAttackHit");
     }
 
-    void EndAttackCollision()
+    public void EndAttackCollision()
     {
-        Debug.Log("EndAttackHit");
     }
-    void isDownEnd()
+    public void EndAttack()
     {
-        animator.SetBool("isDownEnd", true);
+        animator.SetBool("isAttack", true);
     }
-    void EndAttack()
+    public void GroggingEnd()
     {
-        attacked = true;
+        isDownfinish = true;
     }
 
     private void FixedUpdate()
     {
-        if (attacked && !status.isAttacking)
-        {
-            attacked = false;
-        }
-        animator.SetBool("isAttack", (!attacked && status.isAttacking));
     }
-
+    public bool GetIsDownFinish()
+    {
+        return isDownfinish;
+    }
+    public bool GetIsDownEnd()
+    {
+        return animator.GetBool("isDownEnd");
+    }
     public void SetIsPlayerVisible(bool onVisible)
     {
         animator.SetBool("isPlayerVisible", onVisible);
+    }
+    public void SetIsattack(bool onVisible)
+    {
+        animator.SetBool("isAttack", onVisible);
+    }
+    public bool GetIsPlayerVisible()
+    {
+        return animator.GetBool("isPlayerVisible");
     }
     public void SetDistanceFromWayPoint(float distancefromtarget)
     {
@@ -63,23 +74,22 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetFloat("distanceFromPlayer", currentdistance);
     }
-    public void StartChasePlayer()
+    public void SetChasePlayer(bool onVisible)
     {
-        animator.SetBool("isPlayerChase", true);
+        animator.SetBool("isPlayerChase", onVisible);
     }
-    public void EndChasePlayer()
+    public void SetPatrol(bool onVisible)
     {
-        animator.SetBool("isPlayerChase", false);
+        animator.SetBool("isPatrol", onVisible);
     }
-    public void StartPatrol()
+    public void SetIsDownEnd(bool onVisible)
     {
-        animator.SetBool("isPatrol", true);
+        animator.SetBool("IsDownEnd", onVisible);
     }
-    public void EndPatrol()
+    public bool GetIsDown()
     {
-        animator.SetBool("isPatrol", false);
+       return animator.GetBool("isDown");
     }
-
     public void StartIsDown()
     {
         animator.SetBool("isDown", true);
@@ -88,4 +98,5 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetBool("isDown", false);
     }
+
 }

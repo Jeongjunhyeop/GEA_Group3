@@ -106,56 +106,42 @@ public class EnemyCtrl : MonoBehaviour
         //Lastly, we get the distance to the next waypoint target
         distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
         enemyAnimation.SetDistanceFromWayPoint(distanceFromTarget);
-
-
-        switch (state)
-        {
-            case State.Patroling:
-                Patroling();
-                break;
-            case State.Chasing:
-                chasing();
-                break;
-            case State.Attacking:
-            //Attacking();
-            case State.Grogging:
-                Grogging();
-                break;
-        }
-
-        if (state != nextState)
-        {
-            state = nextState;
-            switch (state)
-            {
-                case State.Patroling:
-                    patrolStart();
-                    break;
-                case State.Chasing:
-                    chaseStart();
-                    break;
-                case State.Attacking:
-                    attackStart();
-                    break;
-                case State.Grogging:
-                    groggingStart();
-                    break;
-            }
-        }
     }
 
     public void StartChasePlayer()
     {
-        enemyAnimation.StartChasePlayer();
-        Debug.Log("startchase");
+        enemyAnimation.SetChasePlayer(true);
         navMeshAgent.SetDestination(player.transform.position);
     }
 
     public void EndChasePlayer()
     {
-        enemyAnimation.EndChasePlayer();
-        Debug.Log("end chase");
+        if(currentDistance > 6.0f)
+        {
+            StateStartCommon();
+        }
+    }
+    public void StartMoveToTarget()
+    {
+        StateStartCommon();
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
+    }
+    public void StartAttackPlayer()
+    {
+        navMeshAgent.SetDestination(player.transform.position);
+    }
+
+    public void EndAttackPlayer()
+    {
+        enemyAnimation.SetIsattack(false);
+        if (distanceFromTarget > 6.0f)
+        {
+            StateStartCommon();
+        }
+    }
+    public void GetPlayerNav()
+    {
+        navMeshAgent.SetDestination(player.transform.position);
     }
     public void SetNextPoint()
     {
@@ -179,122 +165,70 @@ public class EnemyCtrl : MonoBehaviour
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
 
-    // 스테이트를 변경한다.
-    void ChangeState(State nextState)
-    {
-        this.nextState = nextState;
-    }
-
-    void patrolStart()
-    {
-        enemyAnimation.StartPatrol();
-        StateStartCommon();
-    }
-
-    void Patroling()
-    {
-        // 타겟을 발견하면 추적한다.
-        if (Vector3.Distance(player.transform.position, transform.position) <= 6.0f)
-        {
-            ChangeState(State.Chasing);
-        }
-        else
-        {
-            navMeshAgent.SetDestination(waypoints[currentTarget].position);
-        }
-    }
-    // 추적 시작. 
-    void chaseStart()
-    {
-        enemyAnimation.EndPatrol();
-        StateStartCommon();
-    }
-    // 추적 중. 
-    void chasing()
-    {
-        if (Vector3.Distance(player.transform.position, transform.position) >= 6.0f)
-        {
-            ChangeState(State.Patroling);
-            return;
-        }
-        // 2미터 이내로 접근하면 공격한다.
-        if (Vector3.Distance(player.transform.position, transform.position) <= 2.0f)
-        {
-            ChangeState(State.Attacking);
-        }
-        else
-        {
-            navMeshAgent.SetDestination(player.transform.position);
-        }
-    }
-
-    // 공격 스테이트가 시작되기 전에 호출된다.
-    void attackStart()
-    {
-        StateStartCommon();
-
-        status.isAttacking = true;
-    }
-
-    // 공격 중 처리.
-    void attacking()
-    {
-        if (enemyAnimation.IsAttacked())
-        {
-            ChangeState(State.Patroling);
-        }
-    }
-    void groggingStart()
-    {
-        StateStartCommon();
-
-        status.isGrogging = true;
-    }
     void dropItem()
     {
         if (dropItemPrefab.Length == 0) { return; }
         GameObject dropItem = dropItemPrefab[Random.Range(0, dropItemPrefab.Length)];
         Instantiate(dropItem, transform.position, Quaternion.identity);
     }
-    void Grogging()
+    public void StartGrogging()
     {
-        if (status.isGrogging == true)
+        GetComponent<Collider>().enabled = false;
+        navMeshAgent.enabled = false;
+        enemyAnimation.SetIsDownEnd(true);
+        dropItem();
+    }
+    public void UpdateGrogging()
+    {
+        if (enemyAnimation.GetIsDownFinish() == true)
         {
-            GetComponent<Collider>().enabled = false;
-            navMeshAgent.enabled = false;
-            Invoke("endIsDown", 5f);
-            Debug.Log("isdown");
-            dropItem();
-            navMeshAgent.enabled = true;
-            GetComponent<Collider>().enabled = true;
-
-            enemyHp = 1;
-            ChangeState(State.Patroling);
+            Invoke("EndGrog", 3f);
         }
     }
-
+    public void EndGrogging()
+    {
+    }
     void explosionDamage()
     {
         /*GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity) as GameObject;
 		effect.transform.localPosition = transform.position + new Vector3(0.0f, 0.5f, 0.0f);
 		Destroy(effect, 0.3f);*/
-        Debug.Log("boomgotit");
-        enemyAnimation.StartIsDown();
-        enemyHp = 0;
-        if (enemyHp == 0)
+        
+        if(enemyAnimation.GetIsDown() == false)
         {
-            ChangeState(State.Grogging);
+            enemyHp = 0;
+            enemyAnimation.StartIsDown();
         }
     }
+    void Damage(AttackArea.AttackInfo attackInfo)
+    {
+        if(attackInfo.attackPower >= 10)
+        {
+            enemyHp = 0;
+            enemyAnimation.StartIsDown();
+        }
+    }
+    void EndGrog()
+    {
+        navMeshAgent.enabled = true;
+        GetComponent<Collider>().enabled = true;
+        enemyHp = 1;
+        enemyAnimation.EndIsDown();
+        enemyAnimation.SetIsDownEnd(false);
+        StateStartCommon();
+        enemyAnimation.SetPatrol(true);
+        
+    }
+    
     // 스테이트가 시작되기 전에 스테이터스를 초기화한다.
     void StateStartCommon()
     {
-        status.isAttacking = false;
-        status.isGrogging = false;
+        enemyAnimation.SetChasePlayer(false);
+        enemyAnimation.SetIsattack(false);
     }
 
-    void endIsDown()
+    public void EndPatrol()
     {
-        enemyAnimation.EndIsDown();
+        enemyAnimation.SetPatrol(false);
     }
 }
