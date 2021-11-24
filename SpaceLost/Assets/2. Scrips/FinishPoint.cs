@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FinishPoint : MonoBehaviour
 {
+    public Text ObjCount;
     public int objectCheck;
     [Header("목표 오브젝트 갯수")]
     [SerializeField]
-    private int ObjCheck = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int ObjCheck = 2;
 
     // Update is called once per frame
     void Update()
     {
+        ObjCount.text = objectCheck + "/"+ ObjCheck;
+
         if(objectCheck == ObjCheck)
         {
             SceneManager.LoadScene("ClearScene");

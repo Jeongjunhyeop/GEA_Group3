@@ -28,5 +28,12 @@ public class inGameUi : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+
+        if (Input.GetKey("escape"))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("StageSelect");
+        }
     }
 }
