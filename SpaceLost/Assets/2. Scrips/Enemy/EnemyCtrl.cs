@@ -62,7 +62,7 @@ public class EnemyCtrl : MonoBehaviour
         {
             waypoints = new Transform[1]
             {
-                transform
+                waypoints[0] = this.transform
             };
         }
         else
@@ -147,9 +147,11 @@ public class EnemyCtrl : MonoBehaviour
     {
         if (pointIndex.Length == 0)
         {
+            currentTarget = 0;
         }
         if(pointIndexLength == 1)
         {
+            currentTarget = 0;
         }
         else
         {
