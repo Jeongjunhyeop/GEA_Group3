@@ -92,14 +92,6 @@ public class PlayerMove : MonoBehaviour
         SetGrab(item, true);
         state.isHolding = true;
         state.grabbedThing = item;
-        if(item.tag == "GoldWeapon")
-        {
-            state.powerBoost = true;
-        }
-        else
-        {
-            state.powerBoost = false;
-        }
     }
 
     void Drop()

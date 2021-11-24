@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
 {
-    // General
-    //
-    //
-    // machine variables
+    // General state machine variables
 
     private Animator animator;
     CharacterState status;
 
-    bool isDownfinish = false;
+    bool isDown = false;
     bool attacked = false;
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         status = gameObject.GetComponent<CharacterState>();
-
     }
 
     public bool IsAttacked()
@@ -27,44 +23,34 @@ public class EnemyAnimation : MonoBehaviour
     }
 
 
-    public void OnAttackCollision()
+    void OnAttackCollision()
     {
+        Debug.Log("StartAttackHit");
     }
 
-    public void EndAttackCollision()
+    void EndAttackCollision()
+
     {
+        Debug.Log("EndAttackHit");
     }
-    public void EndAttack()
+
+    void EndAttack()
     {
-        animator.SetBool("isAttack", true);
-    }
-    public void GroggingEnd()
-    {
-        isDownfinish = true;
+        attacked = true;
     }
 
     private void FixedUpdate()
     {
+        if (attacked && !status.isAttacking)
+        {
+            attacked = false;
+        }
+        animator.SetBool("isAttack", (!attacked && status.isAttacking));
     }
-    public bool GetIsDownFinish()
-    {
-        return isDownfinish;
-    }
-    public bool GetIsDownEnd()
-    {
-        return animator.GetBool("isDownEnd");
-    }
+
     public void SetIsPlayerVisible(bool onVisible)
     {
         animator.SetBool("isPlayerVisible", onVisible);
-    }
-    public void SetIsattack(bool onVisible)
-    {
-        animator.SetBool("isAttack", onVisible);
-    }
-    public bool GetIsPlayerVisible()
-    {
-        return animator.GetBool("isPlayerVisible");
     }
     public void SetDistanceFromWayPoint(float distancefromtarget)
     {
@@ -74,29 +60,13 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetFloat("distanceFromPlayer", currentdistance);
     }
-    public void SetChasePlayer(bool onVisible)
+    public void StartChasePlayer()
     {
-        animator.SetBool("isPlayerChase", onVisible);
+        animator.SetBool("isPlayerChase", true);
     }
-    public void SetPatrol(bool onVisible)
+    public void EndChasePlayer()
     {
-        animator.SetBool("isPatrol", onVisible);
-    }
-    public void SetIsDownEnd(bool onVisible)
-    {
-        animator.SetBool("IsDownEnd", onVisible);
-    }
-    public bool GetIsDown()
-    {
-       return animator.GetBool("isDown");
-    }
-    public void StartIsDown()
-    {
-        animator.SetBool("isDown", true);
-    }
-    public void EndIsDown()
-    {
-        animator.SetBool("isDown", false);
+        animator.SetBool("isPlayerChase", false);
     }
 
 }

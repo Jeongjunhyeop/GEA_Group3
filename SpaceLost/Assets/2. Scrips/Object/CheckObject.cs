@@ -12,6 +12,8 @@ public class CheckObject : MonoBehaviour
     public bool objectCheck = false;
     public bool Objectin = false;
     public bool gameFail = false;
+
+    public float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,37 +33,13 @@ public class CheckObject : MonoBehaviour
             }
         }
 
-        if(objectCheck == true)
-        {
-            ObjTimer += Time.deltaTime;
+        
 
-            if(ObjTimer > 3)
-            {
-                Objectin = true;
-                SceneManager.LoadScene("ClearScene");
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
-                ObjTimer = 0;
-            }
-        }
+        
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "FinishPoint")
-        {
-            objectCheck = true;
-        }
-    }
+    
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "FinishPoint")
-        {
-            objectCheck = false;
-            ObjTimer = 0;
-        }
-    }
+
 }
 
