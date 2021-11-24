@@ -94,7 +94,7 @@ public class TPSCameraControl : MonoBehaviour
     {
         Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         bool isMove = movement.magnitude != 0;
-        animation.Move(isMove);
+        //animation.Move(isMove);
         if (isMove)
         {
             Vector3 lookForward = new Vector3(cameraArm.transform.forward.x, 0f, cameraArm.transform.forward.z).normalized;

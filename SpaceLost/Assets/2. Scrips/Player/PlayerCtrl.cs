@@ -95,7 +95,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Walking()
     {
-        
+
     }
 
     // 공격 스테이트가 시작되기 전에 호출된다. 
@@ -115,8 +115,8 @@ public class PlayerCtrl : MonoBehaviour
     // 공격 중 처리.
     void Attacking()
     {
-//        if (charaAnimation.IsAttacked())
-//            ChangeState(State.Walking);
+        //        if (charaAnimation.IsAttacked())
+        //            ChangeState(State.Walking);
     }
 
     //아이템 잡기가 실행되기 전 호출
