@@ -134,7 +134,7 @@ public class EnemyCtrl : MonoBehaviour
     public void EndAttackPlayer()
     {
         enemyAnimation.SetIsattack(false);
-        if (distanceFromTarget > 6.0f)
+        if (currentDistance > 6.0f)
         {
             StateStartCommon();
         }
@@ -202,14 +202,14 @@ public class EnemyCtrl : MonoBehaviour
             enemyAnimation.StartIsDown();
         }
     }
-    //void Damage(AttackArea.AttackInfo attackInfo)
-    //{
-    //    if(attackInfo.attackPower >= 10)
-    //    {
-    //        enemyHp = 0;
-    //        enemyAnimation.StartIsDown();
-    //    }
-    //}
+    void Damage(AttackArea.AttackInfo attackInfo)
+    {
+        if (enemyAnimation.GetIsDown() == false)
+        {
+            enemyHp = 0;
+            enemyAnimation.StartIsDown();
+        }
+    }
     void EndGrog()
     {
         navMeshAgent.enabled = true;
