@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6564702828986679244}
   m_Layer: 0
   m_Name: GoldDart
-  m_TagString: Untagged
+  m_TagString: GoldWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,9 +230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3bcedcf60bfdc429eace3d7cbd63e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentage: 
+  percentage: 64000000
   total: 0
-  dropItemPrefab: []
+  dropItemPrefab:
+  - {fileID: 1348631928614724, guid: ddc93f5a1c2c61e479e563084f8363bc, type: 3}
 --- !u!1 &8921862554954167146
 GameObject:
   m_ObjectHideFlags: 0
