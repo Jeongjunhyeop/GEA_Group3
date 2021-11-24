@@ -105,7 +105,7 @@ public class ObjectCtrl : MonoBehaviour
 
     void Damage()
     {
-        status.hp -= 1;
+        status.hp -= 2;
 
         if (status.hp <= 0 && !(gameObject.tag == "Explosive"))
         {
