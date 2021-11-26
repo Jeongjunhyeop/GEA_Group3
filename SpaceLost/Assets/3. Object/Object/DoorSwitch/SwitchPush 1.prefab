@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1945090942}
   m_Layer: 0
   m_Name: SwitchPush 1
-  m_TagString: Untagged
+  m_TagString: Switch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cdfc773eeaaa141a5f3f7169747873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorA: {fileID: 2198569764742334261, guid: 41c0d823d8604e14696b4f854a3da9c6, type: 3}
 --- !u!1 &8956786964885998367
 GameObject:
   m_ObjectHideFlags: 0

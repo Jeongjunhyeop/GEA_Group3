@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ObjectCtrl : MonoBehaviour
 {
-    [Header("확률")]
+    [Header("확률(%)")]
     public int[] percentage = {
-       35, //꽝
-       25, //이동속도 증가
-       15, //적 이동속도 일시 감소
+       40, //꽝
+       30, //이동속도 증가
+       20, //적 이동속도 일시 감소
        10, //게임플레이시간
-       8, //공격 1회 막기
-       5, //미션아이템 위치 표시
-       2, //미션 아이템
     };
     [SerializeField]
     private int total;
