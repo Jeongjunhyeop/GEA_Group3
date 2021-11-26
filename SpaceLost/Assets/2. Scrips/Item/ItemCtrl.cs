@@ -11,11 +11,15 @@ public class ItemCtrl : MonoBehaviour
         SpeedUp, //플레이어 이동속도 일시 증가
         SpeedDown, //적 이동속도 일시 감소
         Empty, //꽝
-        Nav, //미션아이템 위치 표시
-        Sheild, //공격 1회 막기
-        MissionObject, //미션아이템
     };
+
+    public enum DestroyKind
+    {
+        Destroy,
+        DontDestroy,
+    }
     public ItemKind kind;
+    public DestroyKind destroyKind;
     [SerializeField]
     private float rotateSpeed; //아이템 회전속도
 
@@ -23,17 +27,22 @@ public class ItemCtrl : MonoBehaviour
         if(kind == ItemKind.Empty){
             Destroy(gameObject);
         }
+        if(destroyKind == DestroyKind.Destroy)
+        {
+            StartCoroutine("DestroyItem");
+        }
     }
 
     void Update(){
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World); //아이템 회전
-        //StartCoroutine("DestroyItem");
+        
     }
 
-    //IEnumerator DestroyItem(){
-    //    yield return new WaitForSecondsRealtime(10f);
-    //    Destroy(gameObject);
-    //}
+    IEnumerator DestroyItem()
+    {
+        yield return new WaitForSecondsRealtime(7f);
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
