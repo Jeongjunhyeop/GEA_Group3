@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour
     CharacterAnimation animation;
     Rigidbody rigid;
     GameObject playerGrabPoint;
+    [SerializeField]
+    Transform camera;
 
     float rotationSpeed = 5f;
 
@@ -28,12 +30,9 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
         m_timeSinceAttack += Time.deltaTime;
 
-        move(h, v);
+        Move();
         jump();
         Attack();
 
@@ -43,24 +42,21 @@ public class PlayerMove : MonoBehaviour
 
 
 
-    void move(float h, float v)
+    private void Move()
     {
-        Vector3 movement = new Vector3(h, 0, v);
-
-        animation.Move(h, v);
-
-        if (movement != Vector3.zero)
+        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        bool isMove = movement.magnitude != 0;
+        animation.Move(isMove);
+        if (isMove)
         {
-            float angle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            Vector3 lookForward = new Vector3(camera.transform.forward.x, 0f, camera.transform.forward.z).normalized;
+            Vector3 lookRight = new Vector3(camera.transform.right.x, 0f, camera.transform.right.z).normalized;
+            Vector3 moveDir = lookForward * movement.y + lookRight * movement.x;
 
-            if (90.0f > angle && angle > -90.0f)
-            {
-                angle = angle * rotationSpeed * Time.deltaTime;
-                transform.Rotate(Vector3.up, angle);
-            }
+            transform.forward = moveDir;
+            //transform.Translate(moveDir * Time.deltaTime * PlayerState.moveSpeed);
+            transform.position += moveDir * Time.deltaTime * state.moveSpeed;
         }
-
-        transform.Translate(movement * state.moveSpeed * Time.deltaTime);
     }
 
     void jump()
