@@ -26,6 +26,8 @@ public class CharacterState : MonoBehaviour
     //초기 공격력
     public int ATC = 1;
     public bool powerBoost = false;
+    public bool speedBoost = false;
+    public float speedBoostTime = 0.0f;
 
     //현재 들고있는 물건
     public GameObject grabbedThing = null;
@@ -55,6 +57,15 @@ public class CharacterState : MonoBehaviour
         {
             onGround = true;
         }
+        if (speedBoostTime > 0.0f)
+        {
+            moveSpeed = 8.0f;
+            speedBoostTime = Mathf.Max(speedBoostTime - Time.deltaTime, 0.0f);
+        }
+        else
+        {
+            moveSpeed = basicMSpeed;
+        }
     }
 
     public void GetItem(ItemCtrl.ItemKind itemKind)
@@ -66,18 +77,12 @@ public class CharacterState : MonoBehaviour
                 //게임플레이시간증가
                 break;
             case ItemCtrl.ItemKind.SpeedUp:
-                StartCoroutine("PlayerSpeedUp");
+                speedBoostTime += 5.0f;
                 break;
             case ItemCtrl.ItemKind.SpeedDown:
                 //적이동속도감소
                 break;
         }
-    }
 
-    IEnumerator PlayerSpeedUp()
-    {
-        moveSpeed += 5.0f;
-        yield return new WaitForSecondsRealtime(5.0f);
-        moveSpeed = basicMSpeed;
     }
 }

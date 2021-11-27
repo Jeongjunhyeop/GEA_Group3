@@ -15,7 +15,7 @@ public class WaterTowerCtrl : MonoBehaviour
     }
     private void OnDestroy()
     {
-      state.moveSpeed += 1f;
+      state.basicMSpeed += 1f;
       Destroy(destory);
     }
 }
