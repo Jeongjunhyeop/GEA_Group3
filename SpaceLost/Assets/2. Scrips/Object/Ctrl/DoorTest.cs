@@ -14,6 +14,10 @@ public class DoorTest : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
+    public void Start()
+    {
+        count = 0;
+    }
     void Update()
     {
         if (count >= switchNUM)

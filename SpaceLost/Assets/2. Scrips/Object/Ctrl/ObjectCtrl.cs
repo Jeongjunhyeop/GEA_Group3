@@ -22,6 +22,9 @@ public class ObjectCtrl : MonoBehaviour
     private MeshRenderer meshRenderer;
     private int randomNumber;
 
+    public static int crashobject;
+
+    private FinishPoint FinishPoints;
 
     enum State
     {
@@ -34,6 +37,7 @@ public class ObjectCtrl : MonoBehaviour
 
     private void Start()
     {
+        FinishPoints = GameObject.Find("FinishPoint").GetComponent<FinishPoint>();
         status = GetComponent<ObjectStatus>();
         meshRenderer = GetComponent<MeshRenderer>();
         foreach (var item in percentage)
@@ -41,6 +45,8 @@ public class ObjectCtrl : MonoBehaviour
             total += item;
 
         }
+
+        crashobject = 0;
     }
 
     private void Update()
@@ -125,6 +131,14 @@ public class ObjectCtrl : MonoBehaviour
         {
             status.hp = 0;
             StartCoroutine("DestroyBomb");
+        }
+
+        if(status.hp<=0 && (gameObject.tag == "CrashObject"))
+        {
+            status.hp = 0;
+            FinishPoints.CrashObject += 1;
+            ChangeState(State.Destroy);
+
         }
 
     }

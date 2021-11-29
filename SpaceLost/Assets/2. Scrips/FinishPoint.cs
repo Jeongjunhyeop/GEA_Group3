@@ -8,16 +8,21 @@ public class FinishPoint : MonoBehaviour
 {
     public Text ObjCount;
     public int objectCheck;
+    public int CrashObject;
     [Header("목표 오브젝트 갯수")]
     [SerializeField]
     private int ObjCheck = 2;
+
+    [Header("파괴해야할 오브젝트 갯수")]
+    [SerializeField]
+    private int Crash = 2;
 
     // Update is called once per frame
     void Update()
     {
         ObjCount.text = objectCheck + "/"+ ObjCheck;
 
-        if(objectCheck == ObjCheck)
+        if(objectCheck == ObjCheck && ObjectCtrl.crashobject == Crash)
         {
             SceneManager.LoadScene("ClearScene");
             Cursor.visible = true;
