@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         m_timeSinceAttack += Time.deltaTime;
+        if (state.isGrogging)
+            return;
 
         Move();
         jump();

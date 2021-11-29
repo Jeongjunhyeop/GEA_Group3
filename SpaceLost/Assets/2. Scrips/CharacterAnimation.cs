@@ -29,6 +29,11 @@ public class CharacterAnimation : MonoBehaviour
 		animator.SetTrigger("Attack");
 	}
 
+	public void Groggy()
+	{
+		animator.SetTrigger("Dizzy");
+	}
+
 	void Start()
 	{
 		animator = GetComponent<Animator>();
