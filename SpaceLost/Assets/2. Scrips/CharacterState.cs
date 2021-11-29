@@ -31,11 +31,14 @@ public class CharacterState : MonoBehaviour
 
     //현재 들고있는 물건
     public GameObject grabbedThing = null;
+    //애니메이션
+    CharacterAnimation animator;
 
     // Start is called before the first frame update
     void Start()
     {
         gameUi = FindObjectOfType<inGameUi>();
+        animator = GetComponent<CharacterAnimation>();
         //현재 속도와 점프력을 초기화
         moveSpeed = basicMSpeed;
         jumpPower = basicJPower;
@@ -66,6 +69,25 @@ public class CharacterState : MonoBehaviour
         {
             moveSpeed = basicMSpeed;
         }
+
+        if (grabbedThing == null)
+            isHolding = false;
+    }
+
+    void Exploded()
+    {
+        isGrogging = true;
+        animator.Groggy();
+    }
+
+    void DizzyStart()
+    {
+        isGrogging = true;
+    }
+
+    void DizzyEnd()
+    {
+        isGrogging = false;
     }
 
     public void GetItem(ItemCtrl.ItemKind itemKind)
