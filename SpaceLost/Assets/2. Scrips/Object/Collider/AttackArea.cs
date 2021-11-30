@@ -40,10 +40,6 @@ public class AttackArea : MonoBehaviour
         {
             other.SendMessage("Damage_Enemy", GetAttackInfo());
         }
-        if (other.tag == "Player")
-        {
-            other.SendMessage("Damage", GetAttackInfo());
-        }
 
     }
 
