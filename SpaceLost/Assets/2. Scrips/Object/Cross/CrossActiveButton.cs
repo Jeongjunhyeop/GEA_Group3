@@ -8,6 +8,9 @@ public class CrossActiveButton : MonoBehaviour
     public int Count = 0;
     public int MaxCount = 5;
 
+    [SerializeField]
+    CrossActiveButton LinkedCrossSign;
+
     private void Start()
     {
         isGreen = false;
@@ -15,6 +18,17 @@ public class CrossActiveButton : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
+    {
+        if (!isGreen)
+        {
+            isGreen = true;
+            Count = 0;
+            LinkedCrossSign.Linking();
+            StartCoroutine(CrossCountCheck());
+        }
+    }
+
+    public void Linking()
     {
         if (!isGreen)
         {
