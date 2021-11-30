@@ -16,6 +16,7 @@ public class CharacterState : MonoBehaviour
     public float basicMSpeed = 3f;
     //초기 점프력
     public float basicJPower = 5f;
+
     //초기 공격력
     public int basicATC = 1;
 
@@ -28,6 +29,7 @@ public class CharacterState : MonoBehaviour
     public bool powerBoost = false;
     public bool speedBoost = false;
     public float speedBoostTime = 0.0f;
+    float speedBoostSpeed;
 
     Vector3 playerStartPos;
     //현재 들고있는 물건
@@ -55,6 +57,7 @@ public class CharacterState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speedBoostSpeed = basicMSpeed + 5.0f; //아이템속도 업데이트
         //바닥 탐지ray 쏘기
         Debug.DrawRay(transform.position, Vector3.down * 0.1f, new Color(1, 0, 1));
         //ray를 쏴서 맞은 오브젝트 탐지
@@ -64,7 +67,7 @@ public class CharacterState : MonoBehaviour
         }
         if (speedBoostTime > 0.0f)
         {
-            moveSpeed = 8.0f;
+            moveSpeed = speedBoostSpeed;
             speedBoostTime = Mathf.Max(speedBoostTime - Time.deltaTime, 0.0f);
         }
         else
