@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class FinishPoint : MonoBehaviour
 {
     public Text ObjCount;
+    public Text ObjCrashCount;
+
     public int objectCheck;
     public int CrashObject;
+
     [Header("목표 오브젝트 갯수")]
     [SerializeField]
     private int ObjCheck = 2;
@@ -20,9 +23,10 @@ public class FinishPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ObjCount.text = objectCheck + "/"+ ObjCheck;
+        ObjCount.text = objectCheck + "/" + ObjCheck;
+        ObjCrashCount.text = CrashObject +"/" + Crash;
 
-        if(objectCheck == ObjCheck && ObjectCtrl.crashobject == Crash)
+        if (objectCheck == ObjCheck && ObjectCtrl.crashobject == Crash)
         {
             SceneManager.LoadScene("ClearScene");
             Cursor.visible = true;
@@ -37,6 +41,7 @@ public class FinishPoint : MonoBehaviour
         if (other.tag == "MissionObj")
         {
             objectCheck += 1;
+            
         }
 
 
@@ -47,7 +52,6 @@ public class FinishPoint : MonoBehaviour
         if (other.tag == "MissionObj")
         {
             objectCheck -= 1;
-            
         }
     }
 }
