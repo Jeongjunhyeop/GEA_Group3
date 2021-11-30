@@ -38,8 +38,13 @@ public class AttackArea : MonoBehaviour
         }
         if (other.tag == "Enemy")
         {
+            other.SendMessage("Damage_Enemy", GetAttackInfo());
+        }
+        if (other.tag == "Player")
+        {
             other.SendMessage("Damage", GetAttackInfo());
         }
+
     }
 
 }

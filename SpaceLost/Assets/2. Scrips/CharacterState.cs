@@ -29,6 +29,7 @@ public class CharacterState : MonoBehaviour
     public bool speedBoost = false;
     public float speedBoostTime = 0.0f;
 
+    Vector3 playerStartPos;
     //현재 들고있는 물건
     public GameObject grabbedThing = null;
     //애니메이션
@@ -42,6 +43,7 @@ public class CharacterState : MonoBehaviour
         //현재 속도와 점프력을 초기화
         moveSpeed = basicMSpeed;
         jumpPower = basicJPower;
+        playerStartPos = transform.position;
         //현재 상태를 초기화
         grabbedThing = null;
         isHolding = false;
@@ -89,7 +91,10 @@ public class CharacterState : MonoBehaviour
     {
         isGrogging = false;
     }
-
+    void Damage(AttackArea.AttackInfo attackInfo)
+    {
+        transform.position = playerStartPos;
+    }
     public void GetItem(ItemCtrl.ItemKind itemKind)
     {
         switch (itemKind)

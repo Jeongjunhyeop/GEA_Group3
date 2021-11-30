@@ -78,6 +78,10 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator.SetBool("isPlayerChase", onVisible);
     }
+    public bool GetChasePlayer()
+    {
+        return animator.GetBool("isPlayerChase");
+    }
     public void SetPatrol(bool onVisible)
     {
         animator.SetBool("isPatrol", onVisible);

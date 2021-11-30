@@ -15,6 +15,7 @@ public class PlayerCtrl : MonoBehaviour
     RaycastHit raycast;
     Ray ray;
 
+    
     //GameRuleCtrl gameRuleCtrl;
 
     // 스테이트 종류.
@@ -37,6 +38,7 @@ public class PlayerCtrl : MonoBehaviour
         //charaAnimation = GetComponent<CharaAnimation>();
         //gameRuleCtrl = FindObjectOfType<GameRuleCtrl>();
         rigidbody = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -145,7 +147,7 @@ public class PlayerCtrl : MonoBehaviour
     {
 
     }
-
+    
     // 스테이트가 시작되기 전에 스테이터스를 초기화한다.
     void StateStartCommon()
     {

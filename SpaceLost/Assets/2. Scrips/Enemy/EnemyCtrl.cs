@@ -11,14 +11,16 @@ public class EnemyCtrl : MonoBehaviour
     private GameObject player;
     private Ray ray;
     private RaycastHit hit;
-    private float maxDistanceToCheck = 6.0f;
-    private float currentDistance;
+    public int FieldOfView = 60;
+
+    public float maxDistanceToViewCheck = 10.0f;
+    public float maxChaseDistance = 6.0f;
+    public float maxDistanceToAnyCheck = 4.0f;
+    private float currentDistance; 
     private Vector3 checkDirection;
-    private bool isChasePlayer;
     private int enemyHp = 1;
     // Patrol state variables
-
-
+    int layercheker;
     public GameObject[] pointIndex;
 
 
@@ -55,7 +57,7 @@ public class EnemyCtrl : MonoBehaviour
     {
         status = GetComponent<CharacterState>();
         enemyAnimation = GetComponent<EnemyAnimation>();
-
+        layercheker = (1 << 6 | 1 << 7 | 1 << 8 | 1 << 12);
         player = GameObject.FindWithTag("Player");
         pointIndexLength = pointIndex.Length;
         if (pointIndexLength == 0)
@@ -75,24 +77,32 @@ public class EnemyCtrl : MonoBehaviour
         }
         navMeshAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         currentTarget = 0;
-        isChasePlayer = false;
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 height = new Vector3(0.0f, 0.5f, 0.0f);
         //First we check distance from the player 
-        currentDistance = Vector3.Distance(player.transform.position, transform.position);
+        currentDistance = Vector3.Distance(player.transform.position+ height, transform.position + height);
         enemyAnimation.SetDistanceFromPlayer(currentDistance);
         //Then we check for visibility
-        checkDirection = player.transform.position - transform.position;
+        checkDirection = (player.transform.position + height) - (transform.position + height);
         ray = new Ray(transform.position, checkDirection);
-        if (Physics.Raycast(ray, out hit, maxDistanceToCheck))
+        if ((Vector3.Angle(checkDirection, transform.forward)) < FieldOfView)
         {
-            if (hit.collider.gameObject == player)
+            // Detect if player is within the field of view
+            if (Physics.Raycast(transform.position, checkDirection, out hit, maxDistanceToViewCheck, layercheker))
             {
-                enemyAnimation.SetIsPlayerVisible(true);
+                if (hit.collider.gameObject == player)
+                {
+                    enemyAnimation.SetIsPlayerVisible(true);
+                }
+                else
+                {
+                    enemyAnimation.SetIsPlayerVisible(false);
+                }
             }
             else
             {
@@ -101,9 +111,32 @@ public class EnemyCtrl : MonoBehaviour
         }
         else
         {
-            enemyAnimation.SetIsPlayerVisible(false);
+            if(currentDistance <= maxChaseDistance && enemyAnimation.GetChasePlayer())
+            {
+                enemyAnimation.SetIsPlayerVisible(true);
+            }
+            else if (currentDistance <= maxDistanceToAnyCheck)
+            {
+                enemyAnimation.SetIsPlayerVisible(true);
+            }
+            else
+            {
+                enemyAnimation.SetIsPlayerVisible(false);
+            }
         }
-        //Lastly, we get the distance to the next waypoint target
+        Vector3 frontRayPoint = transform.position + (transform.forward * maxDistanceToViewCheck);
+
+        //Approximate perspective visualization
+        Vector3 leftRayPoint = frontRayPoint;
+        leftRayPoint.x += FieldOfView * 0.5f;
+
+        Vector3 rightRayPoint = frontRayPoint;
+        rightRayPoint.x -= FieldOfView * 0.5f;
+
+        Debug.DrawLine(transform.position, frontRayPoint, Color.green);
+        Debug.DrawLine(transform.position, leftRayPoint, Color.black);
+        Debug.DrawLine(transform.position, rightRayPoint, Color.blue);
+
         distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
         enemyAnimation.SetDistanceFromWayPoint(distanceFromTarget);
     }
@@ -202,9 +235,9 @@ public class EnemyCtrl : MonoBehaviour
             enemyAnimation.StartIsDown();
         }
     }
-    void Damage(AttackArea.AttackInfo attackInfo)
+    void Damage_Enemy(AttackArea.AttackInfo attackInfo)
     {
-        if (enemyAnimation.GetIsDown() == false)
+        if (enemyAnimation.GetIsDown() == false && attackInfo.attackPower >= 10)
         {
             enemyHp = 0;
             enemyAnimation.StartIsDown();
@@ -228,7 +261,14 @@ public class EnemyCtrl : MonoBehaviour
         enemyAnimation.SetChasePlayer(false);
         enemyAnimation.SetIsattack(false);
     }
-
+    public void StartPatrol()
+    {
+        if (enemyAnimation.GetIsPlayerVisible())
+        {
+            enemyAnimation.SetChasePlayer(true);
+        }
+        
+    }
     public void EndPatrol()
     {
         enemyAnimation.SetPatrol(false);
