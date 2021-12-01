@@ -9,7 +9,6 @@ public class ItemCtrl : MonoBehaviour
     {
         TimeUp, //게임플레이시간 증가
         SpeedUp, //플레이어 이동속도 일시 증가
-        SpeedDown, //적 이동속도 일시 감소
         Empty, //꽝
     };
 
@@ -40,7 +39,7 @@ public class ItemCtrl : MonoBehaviour
 
     IEnumerator DestroyItem()
     {
-        yield return new WaitForSecondsRealtime(7f);
+        yield return new WaitForSecondsRealtime(10f);
         Destroy(gameObject);
     }
 
