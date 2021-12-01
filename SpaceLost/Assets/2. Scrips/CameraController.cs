@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float wheelSpeed = 100f; //마우스 휠 스크롤 속도
 
-    public float sensitiveity = 100f; //감도
+    public float sensitiveity = 40f; //감도
 
     //private float yMinLimit = 5f; //카메라 x축 회전 제한 최소 값
     private float yMaxLimit = 70f; //카메라 y축 회전 제한 최대 값
