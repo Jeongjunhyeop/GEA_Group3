@@ -28,6 +28,7 @@ public class inGameUi : MonoBehaviour
             FailUi.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
         }
 
         if (Input.GetKey("escape"))
