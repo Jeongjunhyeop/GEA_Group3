@@ -29,7 +29,7 @@ public class ExplosionCol : MonoBehaviour
     IEnumerator Bomb()
     {
         GetComponent<Collider>().enabled = true;
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(1.0f);
         Destroy(gameObject);
     }
 

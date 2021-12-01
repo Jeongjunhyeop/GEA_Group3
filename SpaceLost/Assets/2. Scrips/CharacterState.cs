@@ -109,9 +109,6 @@ public class CharacterState : MonoBehaviour
             case ItemCtrl.ItemKind.SpeedUp:
                 speedBoostTime += 5.0f;
                 break;
-            case ItemCtrl.ItemKind.SpeedDown:
-                //적이동속도감소
-                break;
         }
 
     }
