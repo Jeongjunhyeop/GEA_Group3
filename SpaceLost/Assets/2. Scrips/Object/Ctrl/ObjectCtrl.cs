@@ -117,6 +117,7 @@ public class ObjectCtrl : MonoBehaviour
 
     void Damage(AttackArea.AttackInfo attackInfo)
     {
+        Debug.Log(status.name);
         //status.hp -= 1;
         status.hp -= attackInfo.attackPower;
 
