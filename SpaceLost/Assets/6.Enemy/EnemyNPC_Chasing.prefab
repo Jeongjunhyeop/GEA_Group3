@@ -1872,7 +1872,6 @@ MonoBehaviour:
   pointIndex:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   navMeshAgent: {fileID: 0}
   dropItemPrefab:
   - {fileID: 7208448045392679622, guid: f01ccb60ac60c9c459e5970473702a53, type: 3}
@@ -1889,7 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1fbeb79ff445d418435dca4e2cfc2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCollision: {fileID: 1065587858282260602}
+  attackArea: {fileID: 1065587858282260602}
 --- !u!114 &4526629016793207689
 MonoBehaviour:
   m_ObjectHideFlags: 0

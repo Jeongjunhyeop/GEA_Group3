@@ -1865,6 +1865,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 0}
+  FieldOfView: 60
+  maxDistanceToViewCheck: 10
+  maxChaseDistance: 6
+  maxDistanceToAnyCheck: 4
   pointIndex:
   - {fileID: 0}
   - {fileID: 0}
@@ -1885,6 +1889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1fbeb79ff445d418435dca4e2cfc2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackArea: {fileID: 7657878079561495847}
 --- !u!114 &4526629016793207689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,6 +1914,8 @@ MonoBehaviour:
   jumpPower: 5
   ATC: 1
   powerBoost: 0
+  speedBoost: 0
+  speedBoostTime: 0
   grabbedThing: {fileID: 0}
 --- !u!1 &4526629016793210488
 GameObject:
@@ -2895,6 +2902,7 @@ GameObject:
   - component: {fileID: 7657878079561495843}
   - component: {fileID: 7657878079561495842}
   - component: {fileID: 7657878079561495841}
+  - component: {fileID: 4776874087882278605}
   m_Layer: 0
   m_Name: Stick
   m_TagString: Untagged
@@ -2978,3 +2986,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4776874087882278605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657878079561495847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e2cbaf8a562d64daa405ceee13ac22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

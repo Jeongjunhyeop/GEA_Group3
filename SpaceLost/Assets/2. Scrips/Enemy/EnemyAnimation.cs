@@ -12,13 +12,17 @@ public class EnemyAnimation : MonoBehaviour
     private Animator animator;
     CharacterState status;
 
+    [SerializeField]
+    private GameObject attackArea;
+    Collider attackcollider;
     bool isDownfinish = false;
     bool attacked = false;
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         status = gameObject.GetComponent<CharacterState>();
-
+        attackcollider = attackArea.GetComponent<Collider>();
+        attackcollider.enabled = false;
     }
 
     public bool IsAttacked()
@@ -29,6 +33,7 @@ public class EnemyAnimation : MonoBehaviour
 
     public void OnAttackCollision()
     {
+        attackcollider.enabled = true;
     }
 
     public void EndAttackCollision()
@@ -36,6 +41,7 @@ public class EnemyAnimation : MonoBehaviour
     }
     public void EndAttack()
     {
+        attackcollider.enabled = false;
         animator.SetBool("isAttack", true);
     }
     public void GroggingEnd()
