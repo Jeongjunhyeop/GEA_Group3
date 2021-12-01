@@ -109,5 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjCount: {fileID: 0}
+  ObjCrashCount: {fileID: 0}
   objectCheck: 0
-  ObjCheck: 2
+  CrashObject: 0
+  ObjCheck: 3
+  Crash: 2
