@@ -9,6 +9,7 @@ public class inGameUi : MonoBehaviour
     public float limitTime = 120f;
     private float startTime;
     public Image TargetImage;
+    public GameObject FailUi;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class inGameUi : MonoBehaviour
 
         if (limitTime <= 0)
         {
-            gameObject.GetComponent<SceneButtonManager>().loadFailScene();
+            FailUi.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
