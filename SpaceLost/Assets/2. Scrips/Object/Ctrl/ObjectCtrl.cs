@@ -117,7 +117,7 @@ public class ObjectCtrl : MonoBehaviour
 
     void Damage(AttackArea.AttackInfo attackInfo)
     {
-        Debug.Log(status.name);
+        //Debug.Log(status.name);
         //status.hp -= 1;
         status.hp -= attackInfo.attackPower;
 
@@ -138,7 +138,7 @@ public class ObjectCtrl : MonoBehaviour
         {
             status.hp = 0;
             FinishPoints.CrashObject += 1;
-            GameObject.Find("SoundController2").GetComponent<SoundControl2>().MissionUp();
+            //GameObject.Find("SoundController2").GetComponent<SoundControl2>().MissionUp();
             ChangeState(State.Destroy);
 
         }
@@ -182,7 +182,7 @@ public class ObjectCtrl : MonoBehaviour
         meshRenderer.material.color = Color.white;
         yield return new WaitForSeconds(0.5f);
         //1√ 
-        GameObject.Find("SoundController").GetComponent<SoundControl>().Explosion();
+        //GameObject.Find("SoundController").GetComponent<SoundControl>().Explosion();
         ChangeState(State.Destroy);
         
     }

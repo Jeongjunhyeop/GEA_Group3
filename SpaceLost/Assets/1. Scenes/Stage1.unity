@@ -31087,6 +31087,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6953477829416828852, guid: e1818c9cb95596049a90f48aa4f569d3, type: 3}
+      propertyPath: Crash
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6953477829416828852, guid: e1818c9cb95596049a90f48aa4f569d3, type: 3}
       propertyPath: ObjCount
       value: 
       objectReference: {fileID: 1791610504}
