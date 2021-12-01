@@ -36,6 +36,11 @@ public class SceneButtonManager : MonoBehaviour
         SceneManager.LoadScene("Stage1");
     }
 
+    public void loadBeforeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void loadStage2Scene()
     {
         SceneManager.LoadScene("Stage2");
