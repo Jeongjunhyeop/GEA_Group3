@@ -26,7 +26,7 @@ public class FinishPoint : MonoBehaviour
         ObjCount.text = objectCheck + "/" + ObjCheck;
         ObjCrashCount.text = CrashObject +"/" + Crash;
 
-        if (objectCheck == ObjCheck && ObjectCtrl.crashobject == Crash)
+        if (objectCheck == ObjCheck && CrashObject == Crash)
         {
             SceneManager.LoadScene("ClearScene");
             Cursor.visible = true;
