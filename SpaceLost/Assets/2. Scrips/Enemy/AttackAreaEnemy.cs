@@ -32,7 +32,7 @@ public class AttackAreaEnemy : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.SendMessage("Damage");
+            other.SendMessage("Damage", GetAttackInfo());
         }
     }
 

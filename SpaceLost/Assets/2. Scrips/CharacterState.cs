@@ -94,7 +94,7 @@ public class CharacterState : MonoBehaviour
     {
         isGrogging = false;
     }
-    void Damage(AttackArea.AttackInfo attackInfo)
+    void Damage(AttackAreaEnemy.AttackInfo attackInfo)
     {
         transform.position = playerStartPos;
     }
