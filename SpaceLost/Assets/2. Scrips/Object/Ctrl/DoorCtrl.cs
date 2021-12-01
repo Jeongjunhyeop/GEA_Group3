@@ -19,6 +19,8 @@ public class DoorCtrl : MonoBehaviour
         if(count >= switchNUM) //버튼 누른 횟수가 3 이상이면 open
         {
             anim.SetBool("isOpen", true);
+            GameObject.Find("SoundController2").GetComponent<SoundControl2>().OpenDoor();
+            Debug.Log("Open");
         }
         if(count < switchNUM)
         {

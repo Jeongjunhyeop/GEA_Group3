@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
         if (state.isHolding && Input.GetMouseButtonDown(1) && m_timeSinceAttack > m_attackableTime)
         {
             animation.Attack();
-
+            GameObject.Find("SoundController").GetComponent<SoundControl>().Punch();
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
@@ -120,5 +120,11 @@ public class PlayerMove : MonoBehaviour
             itemCollider.enabled = !isHolding;
         }
         itemRigid.isKinematic = isHolding;
+    }
+
+    IEnumerator PunchSound()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject.Find("SoundController").GetComponent<SoundControl>().Punch();
     }
 }

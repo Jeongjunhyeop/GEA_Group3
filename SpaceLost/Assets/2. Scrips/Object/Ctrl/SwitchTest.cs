@@ -12,10 +12,12 @@ public class SwitchTest : MonoBehaviour
         //doorA = GameObject.FindGameObjectWithTag("Door");
         status = GetComponent<ObjectStatus>();
         doorA.GetComponent<DoorTest>().count -= 1;
+        
         //door.count += 1;
     }
     private void OnDestroy()
     {
+        GameObject.Find("SoundController2").GetComponent<SoundControl2>().SwitchOn();
         doorA.GetComponent<DoorTest>().count += 1;
     }
 

@@ -26,7 +26,8 @@ public class FinishPoint : MonoBehaviour
         ObjCount.text = objectCheck + "/" + ObjCheck;
         ObjCrashCount.text = CrashObject +"/" + Crash;
 
-        if (objectCheck == ObjCheck && ObjectCtrl.crashobject == Crash)
+        
+        if (objectCheck == ObjCheck && CrashObject == Crash)
         {
             SceneManager.LoadScene("ClearScene");
             Cursor.visible = true;
@@ -34,6 +35,8 @@ public class FinishPoint : MonoBehaviour
             Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
             
         }
+
+        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -41,7 +44,7 @@ public class FinishPoint : MonoBehaviour
         if (other.tag == "MissionObj")
         {
             objectCheck += 1;
-            
+            GameObject.Find("SoundController2").GetComponent <SoundControl2>().MissionUp();
         }
 
 

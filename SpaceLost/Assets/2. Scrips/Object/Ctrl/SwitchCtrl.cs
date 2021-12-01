@@ -17,6 +17,7 @@ public class SwitchCtrl : MonoBehaviour
     }
     private void OnDestroy() //스위치 파괴 되면 다시 -1;
     {
+        GameObject.Find("SoundController2").GetComponent<SoundControl2>().SwitchOn();
         door.count -= 1;
     }
 
