@@ -36,10 +36,13 @@ public class CharacterState : MonoBehaviour
     public GameObject grabbedThing = null;
     //애니메이션
     CharacterAnimation animator;
+    //리스폰 포인트
+    Transform RespawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        //RespawnPoint = GameObject.FindGameObjectWithTag("Respawn0").transform;
         gameUi = FindObjectOfType<inGameUi>();
         animator = GetComponent<CharacterAnimation>();
         //현재 속도와 점프력을 초기화
@@ -79,6 +82,12 @@ public class CharacterState : MonoBehaviour
             isHolding = false;
     }
 
+    void Respawn()
+    {
+        this.transform.position = RespawnPoint.transform.position;
+        Exploded();
+    }
+
     void Exploded()
     {
         isGrogging = true;
@@ -111,5 +120,13 @@ public class CharacterState : MonoBehaviour
                 break;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Car")
+            Respawn();
+        if (other.gameObject.tag == "Respawn")
+            RespawnPoint = other.transform;
     }
 }
