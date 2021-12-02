@@ -37,12 +37,15 @@ public class CharacterState : MonoBehaviour
     //애니메이션
     CharacterAnimation animator;
     //리스폰 포인트
-    Transform RespawnPoint;
+    public Transform RespawnPoint;
+    //적 외의 충돌을 처리해줄 히트박스
+    HitBox HitBox;
 
     // Start is called before the first frame update
     void Start()
     {
-        //RespawnPoint = GameObject.FindGameObjectWithTag("Respawn0").transform;
+        RespawnPoint = GameObject.FindGameObjectWithTag("Respawn0").transform;
+        HitBox = GetComponent<HitBox>();
         gameUi = FindObjectOfType<inGameUi>();
         animator = GetComponent<CharacterAnimation>();
         //현재 속도와 점프력을 초기화
@@ -105,7 +108,7 @@ public class CharacterState : MonoBehaviour
     }
     void Damage(AttackAreaEnemy.AttackInfo attackInfo)
     {
-        transform.position = playerStartPos;
+        Respawn();
     }
     public void GetItem(ItemCtrl.ItemKind itemKind)
     {
@@ -123,14 +126,6 @@ public class CharacterState : MonoBehaviour
     }
     void Water()
     {
-        transform.position = playerStartPos;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Car")
-            Respawn();
-        if (other.gameObject.tag == "Respawn")
-            RespawnPoint = other.transform;
+        Respawn();
     }
 }
