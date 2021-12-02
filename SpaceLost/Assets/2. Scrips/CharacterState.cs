@@ -39,13 +39,14 @@ public class CharacterState : MonoBehaviour
     //리스폰 포인트
     public Transform RespawnPoint;
     //적 외의 충돌을 처리해줄 히트박스
-    HitBox HitBox;
+    HitBox HitBox = null;
 
     // Start is called before the first frame update
     void Start()
     {
         RespawnPoint = GameObject.FindGameObjectWithTag("Respawn0").transform;
-        HitBox = GetComponent<HitBox>();
+        if(this.gameObject.tag == "Player")
+            HitBox = GetComponent<HitBox>();
         gameUi = FindObjectOfType<inGameUi>();
         animator = GetComponent<CharacterAnimation>();
         //현재 속도와 점프력을 초기화
@@ -87,6 +88,8 @@ public class CharacterState : MonoBehaviour
 
     void Respawn()
     {
+        if (this.gameObject.tag == "Enemy")
+            return;
         this.transform.position = RespawnPoint.transform.position;
         Exploded();
     }

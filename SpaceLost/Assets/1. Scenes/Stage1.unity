@@ -55805,6 +55805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestZoneGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 169570, guid: 02d51b870121c764ca0be67be79a8ed4, type: 3}
+      propertyPath: m_TagString
+      value: Respawn0
+      objectReference: {fileID: 0}
     - target: {fileID: 479572, guid: 02d51b870121c764ca0be67be79a8ed4, type: 3}
       propertyPath: m_RootOrder
       value: 15
