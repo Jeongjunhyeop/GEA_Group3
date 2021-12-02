@@ -47,6 +47,8 @@ MonoBehaviour:
   audioExplosion: {fileID: 8300000, guid: e44e3fadb8d0b5e4c9488495ac4c9b99, type: 3}
   audioPunch: {fileID: 8300000, guid: 9c12b4f96a5ae5f4e96aa3caf51429ac, type: 3}
   audioMissionUp: {fileID: 8300000, guid: 7287007a4c8e6174abef394f7b058576, type: 3}
+  audioOpenDoor: {fileID: 8300000, guid: 2c91247680b39c9489d871b5286519bc, type: 3}
+  audioSwitchOn: {fileID: 8300000, guid: 8aa7762f1091b894abac2d6fd7f9957c, type: 3}
 --- !u!82 &4722076401847615918
 AudioSource:
   m_ObjectHideFlags: 0

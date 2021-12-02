@@ -71,8 +71,8 @@ GameObject:
   - component: {fileID: 1243506539720308}
   - component: {fileID: 391563052}
   - component: {fileID: 391563053}
-  - component: {fileID: 5069454484357315097}
   - component: {fileID: 3125078376613255081}
+  - component: {fileID: 5494280107204946989}
   m_Layer: 0
   m_Name: SwitchPush
   m_TagString: Switch
@@ -189,18 +189,6 @@ MonoBehaviour:
   total: 0
   dropItemPrefab:
   - {fileID: 1243506209795962, guid: 20338c59319bef448a73a2a9c01e8cb1, type: 3}
---- !u!114 &5069454484357315097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8956592599334490845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754686b1be279e94dbade3cffaa54fe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &3125078376613255081
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,6 +205,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5494280107204946989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956592599334490845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cdfc773eeaaa141a5f3f7169747873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorA: {fileID: 0}
 --- !u!1 &8956786964885998367
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,6 @@ public class SwitchTest : MonoBehaviour
     }
     private void OnDestroy()
     {
-        //GameObject.Find("SoundController2").GetComponent<SoundControl2>().SwitchOn();
         doorA.GetComponent<DoorTest>().count += 1;
     }
 

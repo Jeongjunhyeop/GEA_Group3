@@ -11,7 +11,8 @@ public class SoundControl : MonoBehaviour
     public AudioClip audioExplosion;
     public AudioClip audioPunch;
     public AudioClip audioMissionUp;
-    
+    public AudioClip audioOpenDoor;
+    public AudioClip audioSwitchOn;
 
     // Start is called before the first frame update
     private void Awake()
@@ -45,5 +46,17 @@ public class SoundControl : MonoBehaviour
         audioSource.Play();
     }
 
-    
+    public void OpenDoor()
+    {
+        audioSource.clip = audioOpenDoor;
+        audioSource.Play();
+    }
+
+    public void SwitchOn()
+    {
+        audioSource.clip = audioSwitchOn;
+        audioSource.Play();
+    }
+
+
 }
