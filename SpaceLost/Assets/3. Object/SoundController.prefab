@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3438155714364553883}
-  - component: {fileID: 3438155714364553880}
+  - component: {fileID: 2218285138580925756}
   - component: {fileID: 4722076401847615918}
   m_Layer: 0
   m_Name: SoundController
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3438155714364553880
+--- !u!114 &2218285138580925756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3438155714364553881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584f26c6111d0c34a850c87b2c6a13b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cf99a67c09cb66469b88b5439b36b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioExplosion: {fileID: 8300000, guid: e44e3fadb8d0b5e4c9488495ac4c9b99, type: 3}
+  audioPunch: {fileID: 8300000, guid: 9c12b4f96a5ae5f4e96aa3caf51429ac, type: 3}
+  audioMissionUp: {fileID: 8300000, guid: 7287007a4c8e6174abef394f7b058576, type: 3}
 --- !u!82 &4722076401847615918
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class SoundControl : MonoBehaviour
 
     public AudioClip audioExplosion;
     public AudioClip audioPunch;
+    public AudioClip audioMissionUp;
     
 
     // Start is called before the first frame update
@@ -27,7 +28,11 @@ public class SoundControl : MonoBehaviour
     {
         
     }
-
+    public void MissionUp()
+    {
+        audioSource.clip = audioMissionUp;
+        audioSource.Play();
+    }
     public void Explosion()
     {
         audioSource.clip = audioExplosion;
