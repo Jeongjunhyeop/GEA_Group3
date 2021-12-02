@@ -11,8 +11,8 @@ public class ObjectDestroyEvent : MonoBehaviour
 
     private void Start()
     {
-        if (destroyCamera == null || destoryObject == null)
-            return;
+        //if (destroyCamera == null || destoryObject == null)
+        //    return;
         state = FindObjectOfType<CharacterState>();
     }
     private void OnDestroy()
