@@ -164,12 +164,18 @@ public class EnemyRunCtrl : MonoBehaviour
     }
     public void StartRunToPlayer()
     {
-        enemyRunAnimation.SetIsRun(true);
+        if(!enemyRunAnimation.GetIsRun())
+        {
+            enemyRunAnimation.SetIsRun(true);
+        }
+       
         if(isReturn)
         {
-            if(currentTarget == (pointIndexLength - 1))
+            if(currentTarget == (pointIndexLength - 2))
             {
                 isReturn = false;
+                currentTarget += 1;
+                navMeshAgent.SetDestination(waypoints[currentTarget].position);
             }
             else
             {
@@ -181,9 +187,11 @@ public class EnemyRunCtrl : MonoBehaviour
         }
         else
         {
-            if(currentTarget == 0)
+            if(currentTarget == 1)
             {
                 isReturn = true;
+                currentTarget = 0;
+                navMeshAgent.SetDestination(waypoints[currentTarget].position);
             }
             else
             {
@@ -244,7 +252,7 @@ public class EnemyRunCtrl : MonoBehaviour
             }
             else if(isReturn && currentTarget == 0)
             {
-                if(isChickenAI && isRunToPlayer)
+                if(isChickenAI && enemyRunAnimation.GetIsRun())
                 {
                     enemyRunAnimation.SetHideOnBase(true);
                     GetHomeNav();
