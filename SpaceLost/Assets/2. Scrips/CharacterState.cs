@@ -121,6 +121,10 @@ public class CharacterState : MonoBehaviour
         }
 
     }
+    void Water()
+    {
+        transform.position = playerStartPos;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
