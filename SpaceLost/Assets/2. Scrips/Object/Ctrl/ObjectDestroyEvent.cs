@@ -9,6 +9,10 @@ public class ObjectDestroyEvent : MonoBehaviour
     public GameObject destoryObject;
     public GameObject snowEffect;
 
+    private void Awake()
+    {
+        destroyCamera.SetActive(false);
+    }
     private void Start()
     {
         //if (destroyCamera == null || destoryObject == null)

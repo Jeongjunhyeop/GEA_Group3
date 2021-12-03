@@ -64,7 +64,7 @@ public class CharacterState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedBoostSpeed = basicMSpeed + 5.0f; //아이템속도 업데이트
+        speedBoostSpeed = basicMSpeed + 3.0f; //아이템속도 업데이트
         //바닥 탐지ray 쏘기
         Debug.DrawRay(transform.position, Vector3.down * 0.1f, new Color(1, 0, 1));
         //ray를 쏴서 맞은 오브젝트 탐지
@@ -118,7 +118,7 @@ public class CharacterState : MonoBehaviour
         switch (itemKind)
         {
             case ItemCtrl.ItemKind.TimeUp:
-                gameUi.limitTime += 5f;
+                gameUi.limitTime += 10f;
                 //게임플레이시간증가
                 break;
             case ItemCtrl.ItemKind.SpeedUp:
