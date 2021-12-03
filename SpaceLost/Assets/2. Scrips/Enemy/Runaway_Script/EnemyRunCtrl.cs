@@ -124,8 +124,13 @@ public class EnemyRunCtrl : MonoBehaviour
         if (enemyRunAnimation.GetIsRun() && !enemyRunAnimation.GetIsPlayerVisible())
         {
             runTimeToPlayer += Time.deltaTime;
+            if (navMeshAgent.speed < 4.0f)
+            {
+                navMeshAgent.speed = 6.0f;
+            }
             if (runTimeToPlayer >= maxTimeToRun)
             {
+                navMeshAgent.speed = 3.5f;
                 enemyRunAnimation.SetIsRun(false);
             }
         }
@@ -133,6 +138,7 @@ public class EnemyRunCtrl : MonoBehaviour
         {
             runTimeToPlayer = 0.0f;
         }
+
 
         Vector3 frontRayPoint = transform.position + (transform.forward * maxDistanceToViewCheck);
 
@@ -164,14 +170,11 @@ public class EnemyRunCtrl : MonoBehaviour
     }
     public void StartRunToPlayer()
     {
-        if(!enemyRunAnimation.GetIsRun())
+        if(!enemyRunAnimation.GetIsRun() && isReturn)
         {
             enemyRunAnimation.SetIsRun(true);
-        }
-       
-        if(isReturn)
-        {
-            if(currentTarget == (pointIndexLength - 2))
+
+            if (currentTarget == (pointIndexLength - 2))
             {
                 isReturn = false;
                 currentTarget += 1;
@@ -180,14 +183,16 @@ public class EnemyRunCtrl : MonoBehaviour
             else
             {
                 isReturn = false;
-                currentTarget += 1;         
+                currentTarget += 1;
                 navMeshAgent.SetDestination(waypoints[currentTarget].position);
             }
-            
         }
-        else
+
+        if (!enemyRunAnimation.GetIsRun() && !isReturn)
         {
-            if(currentTarget == 1)
+            enemyRunAnimation.SetIsRun(true);
+
+            if (currentTarget == 1)
             {
                 isReturn = true;
                 currentTarget = 0;
@@ -200,20 +205,8 @@ public class EnemyRunCtrl : MonoBehaviour
                 navMeshAgent.SetDestination(waypoints[currentTarget].position);
             }
         }
-    }
-    public void UpdateRunToPlayer()
-    {
-        if (enemyRunAnimation.GetIsRun() && !enemyRunAnimation.GetIsPlayerVisible())
+        else
         {
-            runTimeToPlayer += Time.deltaTime;
-            if (runTimeToPlayer >= maxTimeToRun)
-            {
-                enemyRunAnimation.SetIsRun(false);
-            }
-        }
-        else if (enemyRunAnimation.GetIsRun() && enemyRunAnimation.GetIsPlayerVisible())
-        {
-            runTimeToPlayer = 0.0f;
         }
     }
     public void StartHideOnBase()
@@ -225,12 +218,21 @@ public class EnemyRunCtrl : MonoBehaviour
         distanceFromHome = Vector3.Distance(homeBasePoint.transform.position, transform.position);
         if (distanceFromHome <= 0.5f)
         {
+            if(navMeshAgent.speed > 0.0f)
+            {
+                navMeshAgent.speed = 0.0f;
+            }
             runTimeAtHome += Time.deltaTime;
             if(runTimeAtHome >= maxTimeToRun)
             {
+                navMeshAgent.speed = 3.5f;
                 enemyRunAnimation.SetIsRun(false);
                 enemyRunAnimation.SetHideOnBase(false);
             }
+        }
+        else
+        {
+            navMeshAgent.speed = 3.5f;
         }
     }
     public void SetNextPoint()
@@ -284,9 +286,10 @@ public class EnemyRunCtrl : MonoBehaviour
     }
     public void StartDestroyed()
     {
-        StartCoroutine("DestroyBomb");
+        navMeshAgent.speed = 0.0f;
+        StartCoroutine("DestroyRobots");
         dropItem();
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 3.5f);
     }
     IEnumerator DestroyRobots()
     {
@@ -327,12 +330,10 @@ public class EnemyRunCtrl : MonoBehaviour
     }
     void Damage_Enemy(AttackArea.AttackInfo attackInfo)
     {
-        if(enemyHp >= 0)
+        Debug.Log("damage");
+        if(enemyRunAnimation.GetIsDestroy() == false)
         {
-            enemyHp -= attackInfo.attackPower;
-        }
-        if(enemyHp == 0)
-        {
+            enemyHp = 0;
             enemyRunAnimation.StartIsDestroy();
         }
     }

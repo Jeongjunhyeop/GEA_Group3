@@ -56,10 +56,10 @@ public class EnemyRunAnimation : MonoBehaviour
     }
     public bool GetIsDestroy()
     {
-        return animator.GetBool("isDown");
+        return animator.GetBool("isDestroy");
     }
     public void StartIsDestroy()
     {
-        animator.SetBool("isDown", true);
+        animator.SetBool("isDestroy", true);
     }
 }

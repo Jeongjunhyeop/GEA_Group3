@@ -10,9 +10,4 @@ public class RunToPlayer : StateMachineBehaviour
         EnemyRunCtrl EnemyRunCtrl = animator.gameObject.GetComponent<EnemyRunCtrl>();
         EnemyRunCtrl.StartRunToPlayer();
     }
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        EnemyRunCtrl EnemyRunCtrl = animator.gameObject.GetComponent<EnemyRunCtrl>();
-    }
-
 }
