@@ -73,6 +73,9 @@ public class CameraController : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Linecast(lookPosition, transform.position, out hitInfo, 1 << LayerMask.NameToLayer("Ground")))
             transform.position = hitInfo.point;
+        if (Physics.Linecast(lookPosition, transform.position, out hitInfo, 1 << LayerMask.NameToLayer("map")))
+            transform.position = hitInfo.point;
+
 
 
     }
