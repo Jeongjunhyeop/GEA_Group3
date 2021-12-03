@@ -5,6 +5,7 @@ using UnityEngine;
 public class MinimapOff : MonoBehaviour
 {
     public GameObject offObj;
+
     void Off()
     {
         offObj.SetActive(false);
@@ -18,6 +19,7 @@ public class MinimapOff : MonoBehaviour
     private void OnEnable()
     {
         offObj.transform.position = gameObject.transform.position;
+
     }
 
 }
