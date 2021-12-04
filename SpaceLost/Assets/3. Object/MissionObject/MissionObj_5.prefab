@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1770640840}
   - component: {fileID: 1770640839}
   - component: {fileID: 1770640838}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HitArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: -7007872925912672016}
   - component: {fileID: 8316888159631576597}
   - component: {fileID: -1588100653321544781}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MissionObj_5
   m_TagString: MissionObj
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7208685057018478085}
   - component: {fileID: 7208685057018478090}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5786843303810689871, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
 --- !u!4 &5786843305133123333 stripped
@@ -412,6 +416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniMap_Mission
       objectReference: {fileID: 0}
+    - target: {fileID: 58156642315724493, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c959a45bba99cfb4b97625b148498037, type: 3}
 --- !u!1 &4707039424667923082 stripped
@@ -434,6 +442,18 @@ PrefabInstance:
     - target: {fileID: 100474, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
       propertyPath: m_Name
       value: MissionObjEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 100474, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 154002, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 161752, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 494362, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
       propertyPath: m_RootOrder

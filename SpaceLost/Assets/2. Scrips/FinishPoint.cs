@@ -29,10 +29,8 @@ public class FinishPoint : MonoBehaviour
         
         if (objectCheck == ObjCheck && CrashObject == Crash)
         {
-            SceneManager.LoadScene("ClearScene");
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
+            StartCoroutine("Delay");
+            //Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
             
         }
 
@@ -56,5 +54,14 @@ public class FinishPoint : MonoBehaviour
         {
             objectCheck -= 1;
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("ClearScene");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
     }
 }

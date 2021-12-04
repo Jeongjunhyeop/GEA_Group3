@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
 
 
 
+
+
     private void Awake()
     {
         //최초 설정된 target과 카메라의 위치를 바탕으로 distance 값 초기화
@@ -33,7 +35,8 @@ public class CameraController : MonoBehaviour
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
-    }
+        
+}
 
     void Update()
     {
@@ -52,9 +55,6 @@ public class CameraController : MonoBehaviour
         distance -= Input.GetAxis("Mouse ScrollWheel") * wheelSpeed * Time.deltaTime;
         //거리는 최소, 최대 거리를 설정해서 그 값을 벗어나지 않도록 한다.
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
-
-
-
     }
 
     private void LateUpdate()

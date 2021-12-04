@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8594447949083166316}
   - component: {fileID: 8594447949083166319}
   - component: {fileID: -6832738483969944078}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MissionObject_1
   m_TagString: MissionObj
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8594447949014590319}
   - component: {fileID: 8594447949014590318}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8594447949216957807}
   - component: {fileID: 8594447949216957804}
   - component: {fileID: 8594447949216957806}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HitArea
   m_TagString: ObjHit
   m_Icon: {fileID: 0}
@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldLight
       objectReference: {fileID: 0}
+    - target: {fileID: 5786843303810689871, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
 --- !u!4 &5786843303693630973 stripped
@@ -412,6 +416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniMap_Mission
       objectReference: {fileID: 0}
+    - target: {fileID: 58156642315724493, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c959a45bba99cfb4b97625b148498037, type: 3}
 --- !u!1 &4100049408404446131 stripped
@@ -434,6 +442,18 @@ PrefabInstance:
     - target: {fileID: 100474, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
       propertyPath: m_Name
       value: MissionObjEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 100474, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 154002, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 161752, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 494362, guid: 3c28deeb58be1104691e6cc748b4c38d, type: 3}
       propertyPath: m_RootOrder

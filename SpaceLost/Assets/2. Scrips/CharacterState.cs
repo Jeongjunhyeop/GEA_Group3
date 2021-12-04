@@ -41,6 +41,10 @@ public class CharacterState : MonoBehaviour
     //적 외의 충돌을 처리해줄 히트박스
     HitBox HitBox = null;
 
+    public GameObject map;
+    public GameObject canvasOff;
+    public bool mapOpen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +63,7 @@ public class CharacterState : MonoBehaviour
         onGround = false;
         isJumping = false;
         isGrogging = false;
+        mapOpen = false;
     }
 
     // Update is called once per frame
@@ -81,6 +86,20 @@ public class CharacterState : MonoBehaviour
         {
             moveSpeed = basicMSpeed;
         }
+
+        if (Input.GetKeyDown(KeyCode.M) && !mapOpen)
+        {
+            map.SetActive(true);
+            canvasOff.SetActive(false);
+            mapOpen = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.M) && mapOpen)
+        {
+            map.SetActive(false);
+            canvasOff.SetActive(true);
+            mapOpen = false;
+        }
+
 
         if (grabbedThing == null)
             isHolding = false;
