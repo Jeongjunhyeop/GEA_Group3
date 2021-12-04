@@ -87,7 +87,7 @@ public class CharacterState : MonoBehaviour
             moveSpeed = basicMSpeed;
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && !mapOpen)
+        if (Input.GetKeyDown(KeyCode.M) && !mapOpen && Time.timeScale != 0)
         {
             if (map == null) { return; }
             if (canvasOff == null) { return; }
