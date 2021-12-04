@@ -9,7 +9,7 @@ public class CrossActiveButton : MonoBehaviour
     public int MaxCount = 5;
 
     [SerializeField]
-    CrossActiveButton LinkedCrossSign;
+    CrossActiveButton[] LinkedCrossSign;
 
     private void Start()
     {
@@ -23,7 +23,8 @@ public class CrossActiveButton : MonoBehaviour
         {
             isGreen = true;
             Count = 0;
-            LinkedCrossSign.Linking();
+            foreach(CrossActiveButton linkedSigh in LinkedCrossSign)
+                linkedSigh.Linking();
             StartCoroutine(CrossCountCheck());
         }
     }
