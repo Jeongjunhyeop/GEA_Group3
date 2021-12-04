@@ -89,12 +89,16 @@ public class CharacterState : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M) && !mapOpen)
         {
+            if (map == null) { return; }
+            if (canvasOff == null) { return; }
             map.SetActive(true);
             canvasOff.SetActive(false);
             mapOpen = true;
         }
         else if (Input.GetKeyDown(KeyCode.M) && mapOpen)
         {
+            if (map == null) { return; }
+            if (canvasOff == null) { return; }
             map.SetActive(false);
             canvasOff.SetActive(true);
             mapOpen = false;

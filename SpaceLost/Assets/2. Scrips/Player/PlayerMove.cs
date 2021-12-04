@@ -106,7 +106,7 @@ public class PlayerMove : MonoBehaviour
         SetGrab(item, false);
 
         playerGrabPoint.transform.DetachChildren();
-        if (item.tag == "MissionObj")
+        if (item.tag == "MissionObj" || item.tag == "MissionBox")
         {
             item.SendMessage("MinimapOn");
         }

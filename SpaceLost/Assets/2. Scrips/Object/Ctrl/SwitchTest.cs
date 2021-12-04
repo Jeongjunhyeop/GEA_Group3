@@ -9,6 +9,7 @@ public class SwitchTest : MonoBehaviour
 
     private void OnEnable()
     {
+        if (doorA == null) { return; }
         //doorA = GameObject.FindGameObjectWithTag("Door");
         status = GetComponent<ObjectStatus>();
         doorA.GetComponent<DoorTest>().count -= 1;
@@ -17,6 +18,7 @@ public class SwitchTest : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if (doorA == null) { return; }
         doorA.GetComponent<DoorTest>().count += 1;
     }
 
