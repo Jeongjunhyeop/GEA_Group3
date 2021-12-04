@@ -143,12 +143,12 @@ public class ObjectCtrl : MonoBehaviour
 
         }
 
-        if(status.hp<=0 && (gameObject.tag == "Switch"))
+        if (status.hp <= 0 && (gameObject.tag == "Switch"))
         {
             GameObject.Find("SoundController").GetComponent<SoundControl>().SwitchOn();
         }
 
-        
+
 
     }
     void Explosion()
