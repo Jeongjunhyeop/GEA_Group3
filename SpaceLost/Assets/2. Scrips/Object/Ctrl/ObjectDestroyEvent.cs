@@ -13,17 +13,16 @@ public class ObjectDestroyEvent : MonoBehaviour
     {
         state = FindObjectOfType<CharacterState>();
         destroyCamera.SetActive(false);
-        if(destroyObject == null) { return; }
 
-        if (destroyCamera == null) { return; }
-
-        if (snowEffect == null) { return; }
 
     }
     private void OnDestroy()
     {
-        if(gameObject.name == "MissionBoat")
+        if (gameObject.name == "MissionBoat")
         {
+            if (destroyObject == null) { return; }
+            if (destroyCamera == null) { return; }
+            if (snowEffect == null) { return; }
             snowEffect.SetActive(false);
             destroyCamera.SetActive(true);
             state.basicMSpeed += 1f;
@@ -32,6 +31,10 @@ public class ObjectDestroyEvent : MonoBehaviour
         }
         else
         {
+
+            if (destroyObject == null) { return; }
+            if (destroyCamera == null) { return; }
+            if (snowEffect == null) { return; }
             snowEffect.SetActive(true);
             destroyCamera.SetActive(true);
             state.basicMSpeed += 1f;
