@@ -44,7 +44,8 @@ public class EnemyRunCtrl : MonoBehaviour
     private float distanceFromHome;
     private float runTimeToPlayer = 0.0f;
     private float runTimeAtHome = 0.0f;
-    private float maxTimeToRun = 30.0f;
+    public float maxTimeToRun = 15.0f;
+    public float maxTimeToHome = 15.0f;
 
     private bool isReturn = false;
     private Transform[] waypoints = null;
@@ -132,6 +133,7 @@ public class EnemyRunCtrl : MonoBehaviour
             {
                 navMeshAgent.speed = 3.5f;
                 enemyRunAnimation.SetIsRun(false);
+                runTimeToPlayer = 0.0f;
             }
         }
         else if (enemyRunAnimation.GetIsRun() && enemyRunAnimation.GetIsPlayerVisible())
@@ -223,9 +225,8 @@ public class EnemyRunCtrl : MonoBehaviour
                 navMeshAgent.speed = 0.0f;
             }
             runTimeAtHome += Time.deltaTime;
-            if(runTimeAtHome >= maxTimeToRun)
+            if(runTimeAtHome >= maxTimeToHome)
             {
-                navMeshAgent.speed = 3.5f;
                 enemyRunAnimation.SetIsRun(false);
                 enemyRunAnimation.SetHideOnBase(false);
             }
@@ -234,6 +235,14 @@ public class EnemyRunCtrl : MonoBehaviour
         {
             navMeshAgent.speed = 3.5f;
         }
+    }
+    public void ExitHideOnBase()
+    {
+        navMeshAgent.speed = 3.5f;
+        runTimeAtHome = 0.0f;
+        isReturn = false;
+        currentTarget = 0;
+        navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
     public void SetNextPoint()
     {

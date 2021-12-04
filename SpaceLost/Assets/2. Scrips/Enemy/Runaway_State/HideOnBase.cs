@@ -17,5 +17,7 @@ public class HideOnBase : StateMachineBehaviour
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        EnemyRunCtrl EnemyRunCtrl = animator.gameObject.GetComponent<EnemyRunCtrl>();
+        EnemyRunCtrl.ExitHideOnBase();
     }
 }
