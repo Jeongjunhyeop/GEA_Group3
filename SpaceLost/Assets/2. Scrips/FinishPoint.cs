@@ -42,6 +42,7 @@ public class FinishPoint : MonoBehaviour
         if (other.tag == "MissionObj")
         {
             objectCheck += 1;
+            Destroy(other);
             GameObject.Find("SoundController").GetComponent <SoundControl>().MissionUp();
         }
 
