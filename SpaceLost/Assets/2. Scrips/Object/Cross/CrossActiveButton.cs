@@ -23,8 +23,9 @@ public class CrossActiveButton : MonoBehaviour
         {
             isGreen = true;
             Count = 0;
-            foreach(CrossActiveButton linkedSigh in LinkedCrossSign)
-                linkedSigh.Linking();
+            if(LinkedCrossSign != null)
+                foreach(CrossActiveButton linkedSigh in LinkedCrossSign)
+                    linkedSigh.Linking();
             StartCoroutine(CrossCountCheck());
         }
     }
