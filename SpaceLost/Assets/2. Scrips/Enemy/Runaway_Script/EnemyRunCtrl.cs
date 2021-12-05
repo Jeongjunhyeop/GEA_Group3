@@ -38,7 +38,7 @@ public class EnemyRunCtrl : MonoBehaviour
 
     private int pointIndexLength;
     private int maxPointIndex = 20;
-    private int currentTarget;
+    public int currentTarget;
 
     private float distanceFromTarget;
     private float distanceFromHome;
@@ -200,6 +200,9 @@ public class EnemyRunCtrl : MonoBehaviour
                 currentTarget = 0;
                 navMeshAgent.SetDestination(waypoints[currentTarget].position);
             }
+            else if(currentTarget == 0)
+            {
+            }
             else
             {
                 isReturn = true;
@@ -275,6 +278,19 @@ public class EnemyRunCtrl : MonoBehaviour
                     currentTarget++;
                 }  
             }
+            else if (!isReturn && currentTarget == 0)
+            {
+                if (isChickenAI && enemyRunAnimation.GetIsRun())
+                {
+                    enemyRunAnimation.SetHideOnBase(true);
+                    GetHomeNav();
+                    return;
+                }
+                else
+                {
+                    currentTarget++;
+                }
+            }
             else if(isReturn && currentTarget != 0)
             {
                 currentTarget--;
@@ -297,7 +313,6 @@ public class EnemyRunCtrl : MonoBehaviour
     {
         navMeshAgent.speed = 0.0f;
         StartCoroutine("DestroyRobots");
-        dropItem();
         Destroy(gameObject, 3.5f);
     }
     IEnumerator DestroyRobots()
@@ -319,6 +334,8 @@ public class EnemyRunCtrl : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         meshRenderer.material.color = Color.white;
         yield return new WaitForSeconds(0.5f);
+
+        dropItem();
         //1√ 
 
     }
