@@ -50,7 +50,7 @@ public class EnemyRunCtrl : MonoBehaviour
     private bool isReturn = false;
     private Transform[] waypoints = null;
 
-
+    private bool dropitem = true;
     // 복수의 아이템을 저장할 수 있는 배열로 한다.
     public GameObject[] dropItemPrefab;
 
@@ -313,6 +313,12 @@ public class EnemyRunCtrl : MonoBehaviour
     {
         navMeshAgent.speed = 0.0f;
         StartCoroutine("DestroyRobots");
+        if(dropitem)
+        {
+            dropitem = false;
+
+            dropItem();
+        }
         Destroy(gameObject, 3.5f);
     }
     IEnumerator DestroyRobots()
@@ -335,7 +341,6 @@ public class EnemyRunCtrl : MonoBehaviour
         meshRenderer.material.color = Color.white;
         yield return new WaitForSeconds(0.5f);
 
-        dropItem();
         //1초
 
     }

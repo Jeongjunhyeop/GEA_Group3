@@ -10,7 +10,6 @@ public class PlayerMove : MonoBehaviour
     GameObject playerGrabPoint;
     [SerializeField]
     Transform camera;
-
     float rotationSpeed = 5f;
 
     private float m_timeSinceAttack = 0.0f;
@@ -118,12 +117,17 @@ public class PlayerMove : MonoBehaviour
     {
         Collider[] itemColliders = item.GetComponents<Collider>();
         Rigidbody itemRigid = item.GetComponent<Rigidbody>();
-
+        UnityEngine.AI.NavMeshObstacle navMeshObstacle = item.GetComponent<UnityEngine.AI.NavMeshObstacle>();
         foreach (Collider itemCollider in itemColliders)
         {
             itemCollider.enabled = !isHolding;
         }
         itemRigid.isKinematic = isHolding;
+        if(navMeshObstacle != null)
+        {
+            navMeshObstacle.enabled = !isHolding;
+        }
+        
     }
 
     IEnumerator PunchSound()
