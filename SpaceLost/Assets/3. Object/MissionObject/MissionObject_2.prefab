@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c1fa693e9004947887c9191d7fcf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
-  maxHp: 5
+  hp: 100
+  maxHp: 100
   objectName: MissionObject
 --- !u!114 &5274705890633337189
 MonoBehaviour:

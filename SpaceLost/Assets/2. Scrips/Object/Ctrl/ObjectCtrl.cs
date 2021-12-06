@@ -121,7 +121,7 @@ public class ObjectCtrl : MonoBehaviour
         //status.hp -= 1;
         status.hp -= attackInfo.attackPower;
 
-        if (status.hp <= 0 && !(gameObject.tag == "Explosive"))
+        if (status.hp <= 0 && !(gameObject.tag == "Explosive" || gameObject.tag == "ExplosiveServer"))
         {
             status.hp = 0;
             ChangeState(State.Destroy);
@@ -133,8 +133,13 @@ public class ObjectCtrl : MonoBehaviour
             status.hp = 0;
             StartCoroutine("DestroyBomb");
         }
+        if (status.hp <= 0 && gameObject.tag == "ExplosiveServer")
+        {
+            status.hp = 0;
+            StartCoroutine("DestroyServer");
+        }
 
-        if(status.hp<=0 && (gameObject.tag == "CrashObject"))
+        if (status.hp<=0 && (gameObject.tag == "CrashObject"))
         {
             status.hp = 0;
             FinishPoints.CrashObject += 1;
@@ -153,9 +158,9 @@ public class ObjectCtrl : MonoBehaviour
     }
     void Explosion()
     {
-        status.hp -= 2;
+        status.hp -= 20;
 
-        if (status.hp <= 0 && !(gameObject.tag == "Explosive"))
+        if (status.hp <= 0 && !(gameObject.tag == "Explosive" || gameObject.tag == "ExplosiveServer"))
         {
             status.hp = 0;
             ChangeState(State.Destroy);
@@ -166,6 +171,12 @@ public class ObjectCtrl : MonoBehaviour
         {
             status.hp = 0;
             StartCoroutine("DestroyBomb");
+        }
+
+        if (status.hp <= 0 && gameObject.tag == "ExplosiveServer")
+        {
+            status.hp = 0;
+            StartCoroutine("DestroyServer");
         }
     }
 
@@ -189,6 +200,22 @@ public class ObjectCtrl : MonoBehaviour
         meshRenderer.material.color = Color.white;
         yield return new WaitForSeconds(0.5f);
         //1√ 
+        GameObject.Find("SoundController").GetComponent<SoundControl>().Explosion();
+        ChangeState(State.Destroy);
+        
+    }
+
+    IEnumerator DestroyServer()
+    {
+
+        meshRenderer.material.color = Color.black;
+        yield return new WaitForSeconds(0.5f);
+        meshRenderer.material.color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+        //1√ 
+
+               
+       
         GameObject.Find("SoundController").GetComponent<SoundControl>().Explosion();
         ChangeState(State.Destroy);
         

@@ -23,7 +23,7 @@ public class AttackArea : MonoBehaviour
 
         attackInfo.attackPower = characterState.ATC;
         if (characterState.powerBoost)
-            attackInfo.attackPower += 100;
+            attackInfo.attackPower += 200;
         //attackInfo.attacker = transform.root;
 
         return attackInfo;
