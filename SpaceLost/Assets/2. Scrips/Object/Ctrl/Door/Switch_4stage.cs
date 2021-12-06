@@ -5,9 +5,17 @@ using UnityEngine;
 public class Switch_4stage : MonoBehaviour
 {
     public GameObject door;
+    public GameObject police;
     public ObjectStatus key;
     ObjectStatus objStatus;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if(police != null)
+        {
+            police.SetActive(false);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.tag);
@@ -26,5 +34,9 @@ public class Switch_4stage : MonoBehaviour
     void Open()
     {
         door.SetActive(false);
+        if (police != null)
+        {
+            police.SetActive(true);
+        }
     }
 }
