@@ -263,7 +263,7 @@ public class EnemyCtrl : MonoBehaviour
     }
     public void StartPatrol()
     {
-        if (enemyAnimation.GetIsPlayerVisible())
+        if (enemyAnimation != null &&enemyAnimation.GetIsPlayerVisible())
         {
             enemyAnimation.SetChasePlayer(true);
         }
