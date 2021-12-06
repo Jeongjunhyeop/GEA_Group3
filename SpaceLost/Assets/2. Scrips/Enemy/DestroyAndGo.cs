@@ -12,10 +12,11 @@ public class DestroyAndGo : MonoBehaviour
         state = FindObjectOfType<CharacterState>();
         foreach (GameObject ActiveObject in ActiveObjects)
         {
-            if (ActiveObjects != null)
+            if(ActiveObject != null)
             {
                 ActiveObject.SetActive(false);
             }
+            
         }
     }
     private void OnDestroy()
@@ -23,7 +24,7 @@ public class DestroyAndGo : MonoBehaviour
         state.basicMSpeed += 1f;
         foreach (GameObject ActiveObject in ActiveObjects)
         {
-            if(ActiveObjects != null)
+            if (ActiveObject != null)
             {
                 ActiveObject.SetActive(true);
             }

@@ -13,6 +13,7 @@ public class Switch_4stage : MonoBehaviour
     {
         if(police != null)
         {
+            Debug.Log(police != null);
             police.SetActive(false);
         }
     }
