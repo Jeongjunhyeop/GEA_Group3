@@ -8,6 +8,7 @@ public class StageSelectBGM : MonoBehaviour
     private void Start()
     {
         audioBGM = GameObject.FindGameObjectWithTag("BGM");
+        if (audioBGM == null) { return; }
         Destroy(this.audioBGM);
     }
 }
