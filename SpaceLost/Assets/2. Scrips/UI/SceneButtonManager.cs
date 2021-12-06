@@ -33,7 +33,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void loadStage1Scene()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("Story1");
     }
 
     public void loadBeforeScene()
@@ -43,7 +43,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void loadStage2Scene()
     {
-        SceneManager.LoadScene("Stage2");
+        SceneManager.LoadScene("Story2");
     }
 
     public void loadStage3Scene()

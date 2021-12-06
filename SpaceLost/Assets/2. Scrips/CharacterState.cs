@@ -43,7 +43,7 @@ public class CharacterState : MonoBehaviour
 
     public GameObject map;
     public GameObject canvasOff;
-    public bool mapOpen;
+    bool mapOpen;
 
     // Start is called before the first frame update
     void Start()
