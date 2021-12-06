@@ -158,6 +158,29 @@ public class ObjectCtrl : MonoBehaviour
     }
     void Explosion()
     {
+        status.hp -= 2;
+
+        if (status.hp <= 0 && !(gameObject.tag == "Explosive" || gameObject.tag == "ExplosiveServer"))
+        {
+            status.hp = 0;
+            ChangeState(State.Destroy);
+
+
+        }
+        if (status.hp <= 0 && gameObject.tag == "Explosive")
+        {
+            status.hp = 0;
+            StartCoroutine("DestroyBomb");
+        }
+
+        if (status.hp <= 0 && gameObject.tag == "ExplosiveServer")
+        {
+            status.hp = 0;
+            StartCoroutine("DestroyServer");
+        }
+    }
+    void ExplosiveServer()
+    {
         status.hp -= 20;
 
         if (status.hp <= 0 && !(gameObject.tag == "Explosive" || gameObject.tag == "ExplosiveServer"))

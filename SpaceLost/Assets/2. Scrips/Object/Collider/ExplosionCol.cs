@@ -16,6 +16,9 @@ public class ExplosionCol : MonoBehaviour
             case "ObjHit":
                 other.SendMessage("Explosion");
                 break;
+            case "ServerHit":
+                other.SendMessage("ExplosiveServer");
+                break;
             case "Player":
                 other.SendMessage("Exploded");
                 break;

@@ -26,6 +26,10 @@ public class HitArea : MonoBehaviour
     {
         transform.GetComponentInParent<ObjectCtrl>().SendMessage("Explosion");
     }
+    void ExplosiveServer()
+    {
+        transform.GetComponentInParent<ObjectCtrl>().SendMessage("ExplosiveServer");
+    }
 
 
 }

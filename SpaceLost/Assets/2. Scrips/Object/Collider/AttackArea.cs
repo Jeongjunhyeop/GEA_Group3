@@ -35,6 +35,10 @@ public class AttackArea : MonoBehaviour
         if (other.tag == "ObjHit")
         {
             other.SendMessage("Damage", GetAttackInfo());
+        }        
+        if (other.tag == "ServerHit")
+        {
+            other.SendMessage("Damage", GetAttackInfo());
         }
         if (other.tag == "Enemy")
         {
