@@ -3,7 +3,6 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< Updated upstream
   tags:
   - Ground
   - ObjHit
@@ -36,11 +35,8 @@ TagManager:
   - Door2
   - key
   - Door3
-  - ExplosiveServer
   - BGM
-=======
-  tags: []
->>>>>>> Stashed changes
+  - ExplosiveServer
   layers:
   - Default
   - TransparentFX
@@ -48,16 +44,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - BreakableObject
+  - UnBreakableObject
+  - Ground
+  - Item
+  - map
+  - Wall
+  - MiniMap
+  - St1_Mission
+  - Map1
   - 
   - 
   - 
