@@ -46,7 +46,7 @@ public class Grabable : MonoBehaviour
             transform.rotation = new Quaternion(90, 90, 0, 0);
 
             playerMove.Hold(gameObject);
-            if(gameObject.tag == "MissionObj" || gameObject.tag == "MissionBox")
+            if(gameObject.tag == "MissionObj" || gameObject.tag == "MissionBox" || gameObject.tag == "key")
             {
                 gameObject.SendMessage("Off");
             }

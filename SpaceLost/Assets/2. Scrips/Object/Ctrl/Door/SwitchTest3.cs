@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwitchTest3 : MonoBehaviour
 {
     ObjectStatus status;
-    GameObject door;
+    public GameObject door;
 
     private void OnEnable()
     {
