@@ -22,7 +22,7 @@ public class DoorTest : MonoBehaviour
     {
         if (count == switchNUM)
         {
-            GameObject.Find("SoundController").GetComponent<SoundControl>().Explosion();
+            //GameObject.Find("SoundController").GetComponent<SoundControl>().Explosion();
             anim.SetBool("isOpen", true);
             
         }

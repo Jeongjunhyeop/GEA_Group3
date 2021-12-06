@@ -33,30 +33,40 @@ public class SoundControl : MonoBehaviour
     {
         audioSource.clip = audioMissionUp;
         audioSource.Play();
+        Clear();
+
     }
     public void Explosion()
     {
         audioSource.clip = audioExplosion;
         audioSource.Play();
+        Clear();
     }
 
     public void Punch()
     {
         audioSource.clip = audioPunch;
         audioSource.Play();
+        Clear();
     }
 
     public void OpenDoor()
     {
         audioSource.clip = audioOpenDoor;
         audioSource.Play();
+        Clear();
     }
 
     public void SwitchOn()
     {
         audioSource.clip = audioSwitchOn;
         audioSource.Play();
+        Clear();
     }
 
-
+    IEnumerator Clear()
+    {
+        yield return new WaitForSeconds(0.3f);
+        audioSource.clip = null;
+    }
 }
