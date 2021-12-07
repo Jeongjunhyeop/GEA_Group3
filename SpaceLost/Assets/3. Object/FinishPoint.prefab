@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4422377934305276086}
   - component: {fileID: 4422377934305276087}
   - component: {fileID: 4422377934305276084}
+  - component: {fileID: 421131858201449717}
   m_Layer: 0
   m_Name: FinishPoint
   m_TagString: FinishPoint
@@ -81,3 +82,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &421131858201449717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4422377934305276090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1741bb9990e7d25488e850990fc4286c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjCount: {fileID: 0}
+  ObjCrashCount: {fileID: 0}
+  objectCheck: 0
+  CrashObject: 0
+  ObjCheck: 2
+  Crash: 2
