@@ -8,7 +8,9 @@ public class Switch_4stage : MonoBehaviour
     public GameObject police;
     public ObjectStatus key;
     public GameObject portal;
+    public GameObject Effect;
     ObjectStatus objStatus;
+    ObjectCtrl objCtrl;
     public bool IsDestroy = false;
     // Start is called before the first frame update
     private void Awake()
@@ -25,6 +27,10 @@ public class Switch_4stage : MonoBehaviour
         {
             portal.SetActive(false);
         }
+        if (Effect != null)
+        {
+            Effect.SetActive(true);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +43,8 @@ public class Switch_4stage : MonoBehaviour
             if (objStatus.objectName == key.objectName && key.objectName != null)
             {
                 Open();
+                objCtrl = other.gameObject.GetComponentInParent<ObjectCtrl>();
+                objCtrl.SendMessage("ObjDestroy");
             }
         }
     }
@@ -51,7 +59,11 @@ public class Switch_4stage : MonoBehaviour
         {
             police.SetActive(true);
         }
-        if(IsDestroy)
+        if (Effect != null)
+        {
+            Effect.SetActive(false);
+        }
+        if (IsDestroy)
         {
             if (portal != null)
             {

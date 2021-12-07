@@ -308,11 +308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689865, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_Color.g
-      value: 0.7058824
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689865, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_Color.r
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689866, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_RootOrder
@@ -360,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689871, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_Name
-      value: GoldLight
+      value: GreenLight
       objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689871, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_Layer
@@ -517,6 +517,14 @@ PrefabInstance:
     - target: {fileID: 58156642315724493, guid: c959a45bba99cfb4b97625b148498037, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 58156642333881271, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58156642333881271, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c959a45bba99cfb4b97625b148498037, type: 3}

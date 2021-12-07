@@ -392,6 +392,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniMap_Mission
       objectReference: {fileID: 0}
+    - target: {fileID: 58156642333881271, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58156642333881271, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c959a45bba99cfb4b97625b148498037, type: 3}
 --- !u!1 &6871543064587456350 stripped
@@ -481,6 +489,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494362, guid: 3e74236a910ef8647931a141f153ecaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19812448, guid: 3e74236a910ef8647931a141f153ecaf, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19812448, guid: 3e74236a910ef8647931a141f153ecaf, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889900, guid: 3e74236a910ef8647931a141f153ecaf, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889900, guid: 3e74236a910ef8647931a141f153ecaf, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19912106, guid: 3e74236a910ef8647931a141f153ecaf, type: 3}

@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
-  objectName: MissionObject
+  objectName: CardKey
 --- !u!114 &3333840270955147182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +349,14 @@ PrefabInstance:
     - target: {fileID: 58156642315724493, guid: c959a45bba99cfb4b97625b148498037, type: 3}
       propertyPath: m_Name
       value: MiniMap_Mission
+      objectReference: {fileID: 0}
+    - target: {fileID: 58156642333881271, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58156642333881271, guid: c959a45bba99cfb4b97625b148498037, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c959a45bba99cfb4b97625b148498037, type: 3}
@@ -443,6 +451,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3338529544753168037}
     m_Modifications:
+    - target: {fileID: 5786843303810689865, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786843303810689865, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689866, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -489,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5786843303810689871, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}
       propertyPath: m_Name
-      value: GoldLight
+      value: GreenLight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c950afbcbf280d64f95f3ad62d0cbaa6, type: 3}

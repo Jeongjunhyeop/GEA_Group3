@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnEnterTutorial : MonoBehaviour
 {
     public GameObject KeyTutorial;
+    public GameObject[] Police_keys;
     public bool OnEnter = false;
 
     private void Awake()
@@ -12,6 +13,10 @@ public class OnEnterTutorial : MonoBehaviour
         if(KeyTutorial != null)
         {
             KeyTutorial.SetActive(false);
+        }
+        foreach (GameObject police_key in Police_keys)
+        {
+            police_key.SetActive(false);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -35,6 +40,10 @@ public class OnEnterTutorial : MonoBehaviour
             if (OnEnter)
             {
                 KeyTutorial.SetActive(false);
+                foreach(GameObject police_key in Police_keys)
+                {
+                    police_key.SetActive(true);
+                }
             }
         }
         
