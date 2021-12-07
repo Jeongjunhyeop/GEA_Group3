@@ -48,7 +48,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void loadStage3Scene()
     {
-        SceneManager.LoadScene("3.City");
+        SceneManager.LoadScene("Story3");
     }
 
     public void loadStage4Scene()
