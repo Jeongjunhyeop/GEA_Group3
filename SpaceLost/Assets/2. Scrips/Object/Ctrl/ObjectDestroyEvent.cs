@@ -7,7 +7,6 @@ public class ObjectDestroyEvent : MonoBehaviour
     public GameObject destroyCamera;
     CharacterState state;
     public GameObject destroyObject;
-    public GameObject snowEffect;
 
     private void Awake()
     {
@@ -22,8 +21,6 @@ public class ObjectDestroyEvent : MonoBehaviour
         {
             if (destroyObject == null) { return; }
             if (destroyCamera == null) { return; }
-            if (snowEffect == null) { return; }
-            snowEffect.SetActive(false);
             destroyCamera.SetActive(true);
             state.basicMSpeed += 1f;
             destroyObject.SendMessage("ObjectDestroy");
@@ -34,8 +31,6 @@ public class ObjectDestroyEvent : MonoBehaviour
 
             if (destroyObject == null) { return; }
             if (destroyCamera == null) { return; }
-            if (snowEffect == null) { return; }
-            snowEffect.SetActive(true);
             destroyCamera.SetActive(true);
             state.basicMSpeed += 1f;
             destroyObject.SendMessage("ObjectDestroy");
