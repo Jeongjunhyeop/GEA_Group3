@@ -53,7 +53,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void loadStage4Scene()
     {
-        SceneManager.LoadScene("Stage4");
+        SceneManager.LoadScene("Story4");
     }
 
     public void loadStage5Scene()
