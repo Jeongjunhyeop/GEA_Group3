@@ -106,14 +106,6 @@ public class StorySt4 : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(0.5f);
-        text = "여러모양으로 숨어있는 토마토노스톤을";
-        for (int ii = 0; ii <= text.Length; ii++)
-        {
-            stroyText.text = text.Substring(0, ii);
-
-            yield return new WaitForSeconds(0.15f);
-        }
-        yield return new WaitForSeconds(0.5f);
         text = "저 많은 지구인들을 피해";
         for (int ii = 0; ii <= text.Length; ii++)
         {
@@ -122,7 +114,16 @@ public class StorySt4 : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(0.5f);
-        text = "토마토노스톤을 가지고";
+        text = "여러모양으로 숨어있는 토마토노스톤을";
+        for (int ii = 0; ii <= text.Length; ii++)
+        {
+            stroyText.text = text.Substring(0, ii);
+
+            yield return new WaitForSeconds(0.15f);
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        text = "찾아 무사히 지구를 떠나";
         for (int ii = 0; ii <= text.Length; ii++)
         {
             stroyText.text = text.Substring(0, ii);

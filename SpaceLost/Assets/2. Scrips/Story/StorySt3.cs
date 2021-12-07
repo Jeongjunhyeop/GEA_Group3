@@ -75,6 +75,7 @@ public class StorySt3 : MonoBehaviour
         }
         godTomato.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        stroyText.color = Color.yellow;
         text = "갓마토 : ..,.스톤은 연..... 에 있으니";
         for (int ii = 0; ii <= text.Length; ii++)
         {
@@ -92,6 +93,7 @@ public class StorySt3 : MonoBehaviour
         }
         godTomato.SetActive(false);
         yield return new WaitForSeconds(0.6f);
+        stroyText.color = Color.white;
         text = "잠시만요!! 잠시만요!!";
         for (int ii = 0; ii <= text.Length; ii++)
         {

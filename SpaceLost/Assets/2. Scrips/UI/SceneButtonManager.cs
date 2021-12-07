@@ -58,7 +58,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void loadStage5Scene()
     {
-        SceneManager.LoadScene("BossStage");
+        SceneManager.LoadScene("Story5");
     }
 
     public void GameExit()
