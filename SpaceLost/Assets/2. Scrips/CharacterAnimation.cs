@@ -24,6 +24,16 @@ public class CharacterAnimation : MonoBehaviour
 		animator.SetTrigger("Jumping");
 	}
 
+	public void Dash()
+	{
+		animator.SetBool("Dash", true);
+	}
+
+	public void DashEnd()
+	{
+		animator.SetBool("Dash", false);
+	}
+
 	public void Attack()
 	{
 		animator.SetTrigger("Attack");

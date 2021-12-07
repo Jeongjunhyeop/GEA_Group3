@@ -81,10 +81,12 @@ public class CharacterState : MonoBehaviour
         {
             moveSpeed = speedBoostSpeed;
             speedBoostTime = Mathf.Max(speedBoostTime - Time.deltaTime, 0.0f);
+            animator.Dash();
         }
         else
         {
             moveSpeed = basicMSpeed;
+            animator.DashEnd();
         }
 
         if (Input.GetKeyDown(KeyCode.M) && !mapOpen && Time.timeScale != 0)
