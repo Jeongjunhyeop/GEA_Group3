@@ -60,7 +60,7 @@ public class FinishPoint : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("ClearScene");
+        SceneManager.LoadScene("EndingStory");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
