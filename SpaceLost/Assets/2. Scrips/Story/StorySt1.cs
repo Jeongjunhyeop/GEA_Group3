@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class StorySt1 : MonoBehaviour
 {
+    [Header("Fade")]
+    public Image fadeImage;
+    float time = 0;//지속시간
+    float fadeTime = 1f;
+
+    [Header("Story")]
     public GameObject canvasObj;
     public Text stroyText;
     string text = " 토마토를 매우 좋아하는 ";
@@ -44,8 +50,16 @@ public class StorySt1 : MonoBehaviour
 
     IEnumerator StroyStart()
     {
-
-        yield return new WaitForSeconds(2.5f);
+        time = 0f;
+        Color alpha = fadeImage.color;
+        while (alpha.a > 0f)
+        {
+            time += Time.deltaTime / fadeTime;
+            alpha.a = Mathf.Lerp(1, 0, time);
+            fadeImage.color = alpha;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1.5f);
         canvasObj.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         text = "토마토성의 토마인들은";
@@ -142,7 +156,16 @@ public class StorySt1 : MonoBehaviour
             stroyText.text = text.Substring(0, ii);
 
             yield return new WaitForSeconds(0.14f);
-        }      
+        }
+        time = 0;
+        yield return new WaitForSeconds(0.5f);
+        while (alpha.a < 1f)
+        {
+            time += Time.deltaTime / fadeTime;
+            alpha.a = Mathf.Lerp(0, 1, time);
+            fadeImage.color = alpha;
+            yield return null;
+        }
         yield return new WaitForSeconds(1.0f);
         RealStart();
     }
