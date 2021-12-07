@@ -136,9 +136,9 @@ public class CharacterState : MonoBehaviour
     {
         Respawn();
     }
-    public void GetItem(ItemCtrl.ItemKind itemKind)
+    public void GetItem(ItemCtrl.ItemKind kind)
     {
-        switch (itemKind)
+        switch (kind)
         {
             case ItemCtrl.ItemKind.TimeUp:
                 gameUi.limitTime += 10f;

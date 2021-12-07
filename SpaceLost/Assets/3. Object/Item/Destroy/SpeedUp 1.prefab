@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2710060864570353517}
   - component: {fileID: 5522649790913922554}
   - component: {fileID: 1477938582491666234}
+  - component: {fileID: 3566280865920500416}
   m_Layer: 0
   m_Name: SpeedUp 1
   m_TagString: Untagged
@@ -113,6 +114,22 @@ MonoBehaviour:
   kind: 1
   destroyKind: 0
   rotateSpeed: 30
+--- !u!54 &3566280865920500416
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2723445742605956781}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3317320620134197217
 PrefabInstance:
   m_ObjectHideFlags: 0
