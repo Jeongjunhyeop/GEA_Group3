@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4912022598459774351}
   m_Layer: 0
   m_Name: MissionObject_10
-  m_TagString: Untagged
+  m_TagString: MissionObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +292,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.32
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1103751548209488977
 PrefabInstance:
