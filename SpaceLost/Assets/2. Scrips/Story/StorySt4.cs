@@ -160,7 +160,7 @@ public class StorySt4 : MonoBehaviour
 
     public void ClickSkip()
     {
-        SceneManager.LoadScene("Stage4", LoadSceneMode.Single);
+        SceneManager.LoadScene("Stage4_Easy", LoadSceneMode.Single);
     }
 
 }
