@@ -37,7 +37,7 @@ public class TomaWorldCtrl : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(103.5f);
 
         while (alpha.a < 1f)
         {
