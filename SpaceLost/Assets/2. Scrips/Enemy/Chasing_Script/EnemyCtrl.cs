@@ -80,6 +80,7 @@ public class EnemyCtrl : MonoBehaviour
             }
         }
         navMeshAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.speed = status.moveSpeed;
         currentTarget = 0;
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
