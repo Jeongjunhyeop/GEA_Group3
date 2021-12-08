@@ -64,7 +64,7 @@ public class EnemyRunCtrl : MonoBehaviour
     {
         status = GetComponent<CharacterState>();
         enemyRunAnimation = GetComponent<EnemyRunAnimation>();
-        layercheker = (1 << 6 | 1 << 7 | 1 << 8 | 1 << 12);
+        layercheker = (1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 11 | 1 << 12);
         player = GameObject.FindWithTag("Player");
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         pointIndexLength = pointIndex.Length;
