@@ -7,6 +7,11 @@ public class TrapCollider : MonoBehaviour
     public GameObject[] wall;
     public bool trapOpen = true;
     public bool trapDestory = false;
+
+    private void OnEnable()
+    {
+        if (wall.Length == 0) { return; }
+    }
     private void Update()
     {
         if(!trapOpen)

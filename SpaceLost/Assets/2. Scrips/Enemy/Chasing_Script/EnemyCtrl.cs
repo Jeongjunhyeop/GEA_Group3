@@ -207,8 +207,11 @@ public class EnemyCtrl : MonoBehaviour
     void dropItem()
     {
         if (dropItemPrefab.Length == 0) { return; }
-        trapCollider.trapOpen = true;
-        trapCollider.trapDestory = true;
+        if (!(trapCollider == null))
+        {
+            trapCollider.trapOpen = true;
+            trapCollider.trapDestory = true;
+        }
         GameObject dropItem = dropItemPrefab[Random.Range(0, dropItemPrefab.Length)];
         Instantiate(dropItem, transform.position, Quaternion.identity);
     }
