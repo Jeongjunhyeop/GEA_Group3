@@ -37,7 +37,7 @@ public class ObjectCtrl : MonoBehaviour
 
     private void Start()
     {
-        FinishPoints = GameObject.Find("FinishPoint").GetComponent<FinishPoint>();
+        FinishPoints = GameObject.FindGameObjectWithTag("FinishPoint").GetComponent<FinishPoint>();
         status = GetComponent<ObjectStatus>();
         meshRenderer = GetComponent<MeshRenderer>();
         foreach (var item in percentage)

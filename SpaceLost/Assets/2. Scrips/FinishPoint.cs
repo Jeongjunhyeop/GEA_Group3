@@ -26,8 +26,11 @@ public class FinishPoint : MonoBehaviour
         ObjCount.text = objectCheck + "/" + ObjCheck;
         ObjCrashCount.text = CrashObject +"/" + Crash;
 
-        
-        if (objectCheck == ObjCheck && CrashObject == Crash)
+        if(objectCheck == ObjCheck && CrashObject == Crash && gameObject.name == "FinishPointSt5")
+        {
+            StartCoroutine("Ending");
+        }
+        else if(objectCheck == ObjCheck && CrashObject == Crash)
         {
             StartCoroutine("Delay");
             //Debug.Log("Object got"); // 성공 씬 넘어가는 코드 작성
@@ -64,5 +67,13 @@ public class FinishPoint : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+    }
+
+    IEnumerator Ending()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("EndingStory");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
