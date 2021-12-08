@@ -8,7 +8,7 @@ public class ObjectSpawn : MonoBehaviour
 	GameObject[] existObjects;
 	int maxObject = 1;
 
-	void Start()
+    void OnEnable()
 	{
 		existObjects = new GameObject[maxObject];
 		StartCoroutine(Exec());
