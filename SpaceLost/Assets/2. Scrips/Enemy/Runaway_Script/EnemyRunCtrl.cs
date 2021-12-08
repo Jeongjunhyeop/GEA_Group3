@@ -84,6 +84,7 @@ public class EnemyRunCtrl : MonoBehaviour
             }
         }
         navMeshAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.speed = status.moveSpeed;
         currentTarget = 0;
         navMeshAgent.SetDestination(waypoints[currentTarget].position);
     }
@@ -125,13 +126,13 @@ public class EnemyRunCtrl : MonoBehaviour
         if (enemyRunAnimation.GetIsRun() && !enemyRunAnimation.GetIsPlayerVisible())
         {
             runTimeToPlayer += Time.deltaTime;
-            if (navMeshAgent.speed < 4.0f)
+            if (navMeshAgent.speed <= status.moveSpeed)
             {
-                navMeshAgent.speed = 6.0f;
+                navMeshAgent.speed += 3.0f;
             }
             if (runTimeToPlayer >= maxTimeToRun)
             {
-                navMeshAgent.speed = 3.5f;
+                navMeshAgent.speed = status.moveSpeed;
                 enemyRunAnimation.SetIsRun(false);
                 runTimeToPlayer = 0.0f;
             }
@@ -236,7 +237,7 @@ public class EnemyRunCtrl : MonoBehaviour
         }
         else
         {
-            navMeshAgent.speed = 3.5f;
+            navMeshAgent.speed = status.moveSpeed;
         }
     }
     public void ExitHideOnBase()
