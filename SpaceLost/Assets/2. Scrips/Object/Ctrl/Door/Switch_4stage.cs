@@ -9,13 +9,18 @@ public class Switch_4stage : MonoBehaviour
     public ObjectStatus key;
     public GameObject portal;
     public GameObject Effect;
+    public AudioClip openClip;
+    AudioSource openAudio;
     ObjectStatus objStatus;
     ObjectCtrl objCtrl;
     public bool IsDestroy = false;
     // Start is called before the first frame update
     private void Awake()
     {
-        if(police != null)
+        openAudio = gameObject.AddComponent<AudioSource>();
+        openAudio.clip = openClip;
+        openAudio.loop = false;
+        if (police != null)
         {
             police.SetActive(false);
         }
@@ -42,6 +47,7 @@ public class Switch_4stage : MonoBehaviour
             Debug.Log(objStatus.objectName);
             if (objStatus.objectName == key.objectName && key.objectName != null)
             {
+                openAudio.Play();
                 Open();
                 objCtrl = other.gameObject.GetComponentInParent<ObjectCtrl>();
                 objCtrl.SendMessage("ObjDestroy");

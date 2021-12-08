@@ -29,7 +29,7 @@ public class ButtonTogle : MonoBehaviour
             if (other.tag != TargetTag)
                 return;
         }
-
+        Debug.Log(other.name);
         isGreen = !isGreen;
 
         if (isGreen)

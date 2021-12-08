@@ -16,7 +16,10 @@ public class OnEnterTutorial : MonoBehaviour
         }
         foreach (GameObject police_key in Police_keys)
         {
-            police_key.SetActive(false);
+            if (police_key != null)
+            {
+                police_key.SetActive(false);
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -42,7 +45,11 @@ public class OnEnterTutorial : MonoBehaviour
                 KeyTutorial.SetActive(false);
                 foreach(GameObject police_key in Police_keys)
                 {
-                    police_key.SetActive(true);
+                    if(police_key != null)
+                    {
+                        police_key.SetActive(true);
+                    }
+                    
                 }
             }
         }
