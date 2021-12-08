@@ -43,7 +43,9 @@ public class TomaWorldCtrl : MonoBehaviour
         group[0].SetActive(true);
         yield return new WaitForSeconds(29.6f);
         group[1].SetActive(true);
-        yield return new WaitForSeconds(43.9f);
+        yield return new WaitForSeconds(28f);
+        group[2].SetActive(true);
+        yield return new WaitForSeconds(15.9f);
 
         while (alpha.a < 1f)
         {
@@ -56,6 +58,8 @@ public class TomaWorldCtrl : MonoBehaviour
     }
     public void ClickSkip()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
     }
 }
