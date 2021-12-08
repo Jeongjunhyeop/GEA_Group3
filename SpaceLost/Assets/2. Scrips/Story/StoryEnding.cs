@@ -36,15 +36,9 @@ public class StoryEnding : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.anyKey)
         {
-            RealStart();
-        }
-        if (Input.GetKey("escape"))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("MainScene");
+            ClickSkip();
         }
     }
 
@@ -123,14 +117,7 @@ public class StoryEnding : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
 
-        RealStart();
-    }
-
-    void RealStart()
-    {
-
         ClickSkip();
-
     }
 
     public void ClickSkip()
