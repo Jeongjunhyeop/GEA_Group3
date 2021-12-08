@@ -7,6 +7,7 @@ public class EnemyCtrl : MonoBehaviour
     CharacterState status;
     EnemyAnimation enemyAnimation;
     public GameObject hitEffect;
+    TrapCollider trapCollider;
 
     private GameObject player;
     private Ray ray;
@@ -22,6 +23,7 @@ public class EnemyCtrl : MonoBehaviour
     // Patrol state variables
     int layercheker;
     public GameObject[] pointIndex;
+
 
 
     public UnityEngine.AI.NavMeshAgent navMeshAgent;
@@ -57,6 +59,8 @@ public class EnemyCtrl : MonoBehaviour
     {
         status = GetComponent<CharacterState>();
         enemyAnimation = GetComponent<EnemyAnimation>();
+        trapCollider = FindObjectOfType<TrapCollider>();
+        if (trapCollider == null) { return; }
         layercheker = (1 << 6 | 1 << 7 | 1 << 8 | 1 << 12);
         player = GameObject.FindWithTag("Player");
         pointIndexLength = pointIndex.Length;
@@ -203,6 +207,8 @@ public class EnemyCtrl : MonoBehaviour
     void dropItem()
     {
         if (dropItemPrefab.Length == 0) { return; }
+        trapCollider.trapOpen = true;
+        trapCollider.trapDestory = true;
         GameObject dropItem = dropItemPrefab[Random.Range(0, dropItemPrefab.Length)];
         Instantiate(dropItem, transform.position, Quaternion.identity);
     }
