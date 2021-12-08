@@ -13,7 +13,7 @@ public class StoryEnding : MonoBehaviour
 
     [Header("Story")]
     public Text stroyText;
-    string text = "성  공";
+    string text = "성  공!";
     public GameObject dontDestroy;
 
 
@@ -62,7 +62,7 @@ public class StoryEnding : MonoBehaviour
         }
         yield return new WaitForSeconds(0.3f);
         stroyText.color = Color.black;
-        text = "황금인간은";
+        text = "토마인 토마스는";
         for (int ii = 0; ii <= text.Length; ii++)
         {
             stroyText.text = text.Substring(0, ii);
@@ -106,7 +106,7 @@ public class StoryEnding : MonoBehaviour
 
             yield return new WaitForSeconds(0.15f);
         }
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
 
         while (alpha.a < 1f)
         {
