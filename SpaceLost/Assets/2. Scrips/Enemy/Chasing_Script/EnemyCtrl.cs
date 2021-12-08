@@ -61,7 +61,7 @@ public class EnemyCtrl : MonoBehaviour
         enemyAnimation = GetComponent<EnemyAnimation>();
         trapCollider = FindObjectOfType<TrapCollider>();
         if (trapCollider == null) { return; }
-        layercheker = (1 << 6 | 1 << 7 | 1 << 8 | 1 << 12);
+        layercheker = (1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 11 | 1 << 12);
         player = GameObject.FindWithTag("Player");
         pointIndexLength = pointIndex.Length;
         if (pointIndexLength == 0)
