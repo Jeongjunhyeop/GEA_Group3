@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class TomaWorldCtrl : MonoBehaviour
 {
+    public GameObject[] group;
+
     [Header("Fade")]
     public Image fadeImage;
     float time = 0;//지속시간
     float fadeTime = 1f;
     private void Start()
     {
+        if (group.Length == 0) { return; }
         StartCoroutine("Ending");
     }
 
@@ -36,8 +39,11 @@ public class TomaWorldCtrl : MonoBehaviour
             fadeImage.color = alpha;
             yield return null;
         }
-
-        yield return new WaitForSeconds(103.5f);
+        yield return new WaitForSeconds(30f);
+        group[0].SetActive(true);
+        yield return new WaitForSeconds(29.6f);
+        group[1].SetActive(true);
+        yield return new WaitForSeconds(43.9f);
 
         while (alpha.a < 1f)
         {
