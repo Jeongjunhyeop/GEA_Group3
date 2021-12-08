@@ -17,19 +17,20 @@ public class StoryEnding : MonoBehaviour
     public GameObject dontDestroy;
 
 
+
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine("StroyStart");
-        DontDestroyOnLoad(dontDestroy);
 
+        DontDestroyOnLoad(dontDestroy);
 
         GameObject[] audios = GameObject.FindGameObjectsWithTag("BGM");
 
         if (audios.Length >= 2)
         {
-            Destroy(audios[1]);
+            Destroy(audios[0]);
         }
     }
 

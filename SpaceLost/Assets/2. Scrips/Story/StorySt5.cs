@@ -17,14 +17,15 @@ public class StorySt5 : MonoBehaviour
     public GameObject dontDestroy;
 
 
+
+
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine("StroyStart");
+
         DontDestroyOnLoad(dontDestroy);
-
-
         GameObject[] audios = GameObject.FindGameObjectsWithTag("BGM");
 
         if (audios.Length >= 2)

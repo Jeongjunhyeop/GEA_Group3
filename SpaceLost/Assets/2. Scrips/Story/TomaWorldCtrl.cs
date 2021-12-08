@@ -5,19 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class TomaWorldCtrl : MonoBehaviour
 {
-    public GameObject audioBGM;
     private void Start()
     {
-        audioBGM = GameObject.FindGameObjectWithTag("BGM");
-        if (audioBGM == null) { return; }
-        Destroy(this.audioBGM);
-
         StartCoroutine("Ending");
     }
 
     private void Update()
     {
-        if (Input.GetKey("escape"))
+        if (Input.anyKey)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

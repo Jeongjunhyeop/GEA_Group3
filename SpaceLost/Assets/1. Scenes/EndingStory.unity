@@ -515,7 +515,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aca544ef7761b2f4c97f3f11c8d2d041, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -1042,6 +1042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1760447125}
   - component: {fileID: 1760447124}
+  - component: {fileID: 1760447126}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1125,6 +1126,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1760447126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760447123}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd8a9a865f71cb409c2e89b378ae47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioBGM: {fileID: 0}
 --- !u!1001 &1782460793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1394,7 +1408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1239031391}
   stroyText: {fileID: 1402239235}
-  dontDestroy: {fileID: 0}
+  dontDestroy: {fileID: 1205634230}
 --- !u!1 &1976026326
 GameObject:
   m_ObjectHideFlags: 0
