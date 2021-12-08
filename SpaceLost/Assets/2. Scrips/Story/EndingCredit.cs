@@ -8,6 +8,6 @@ public class EndingCredit : MonoBehaviour
     public float textSpeed;
     void Update()
     {
-        text.transform.position = new Vector3(text.transform.position.x, text.transform.position.y+1f*textSpeed, text.transform.position.z);
+        text.transform.position = new Vector3(text.transform.position.x, text.transform.position.y+textSpeed, text.transform.position.z);
     }
 }
